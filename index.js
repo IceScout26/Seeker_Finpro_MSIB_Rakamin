@@ -1,6 +1,9 @@
-var express = require("express");
-var app = express();
+const express = require('express');
+const app = express();
+const authUserRouter = require('./app/routes/authUserRoute');
+
+app.use('/authuser', authUserRouter);
 
 app.listen(3000, () => {
-  console.log(`Server berjalan di http://localhost:5000`);
+  console.log('Server berjalan di http://localhost:3000');
 });
