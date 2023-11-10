@@ -3,7 +3,7 @@ const { signToken } = require('../middleware/jwtMiddleware');
 const { registerUser, findUserByEmail } = require("../models/authUserModel");
 
 const register = async (req, res) => {
-  const { email, password, name, profile_picture, city_id } = req.body;
+  const { email, password, name, profile_picture, city } = req.body;
 
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -13,7 +13,7 @@ const register = async (req, res) => {
       hashedPassword,
       name,
       profile_picture,
-      city_id
+      city
     );
     
     res.status(201).json({ token });
