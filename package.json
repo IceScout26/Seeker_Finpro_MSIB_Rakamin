@@ -13,7 +13,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "seeding": "node db/seeding.js"
   },
   "author": "",
   "license": "ISC"

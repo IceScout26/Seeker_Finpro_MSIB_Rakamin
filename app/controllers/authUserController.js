@@ -1,5 +1,5 @@
 const bcrypt = require("bcrypt");
-const { signToken } = require('./jwtMiddleware');
+const { signToken } = require('../middleware/jwtMiddleware');
 const { registerUser, findUserByEmail } = require("../models/authUserModel");
 
 const register = async (req, res) => {
