@@ -1,5 +1,5 @@
 const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
+const { signToken } = require('./jwtMiddleware');
 const { registerUser, findUserByEmail } = require("../models/authUserModel");
 
 const register = async (req, res) => {
@@ -7,6 +7,7 @@ const register = async (req, res) => {
 
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
+
     const userId = await registerUser(
       email,
       hashedPassword,
@@ -15,9 +16,7 @@ const register = async (req, res) => {
       city_id
     );
 
-    const token = jwt.sign({ userId, email }, process.env.JWT_SECRET, {
-      expiresIn: "1h",
-    });
+    const token = signToken({ userId, email });
 
     res.status(201).json({ token });
   } catch (error) {
@@ -42,9 +41,7 @@ const login = async (req, res) => {
       return res.status(401).json({ message: "Authentication failed" });
     }
 
-    const token = jwt.sign({ userId: user.id, email }, process.env.JWT_SECRET, {
-      expiresIn: "1h",
-    });
+    const token = signToken({ userId: user.id, email });
 
     res.status(200).json({ token });
   } catch (error) {
