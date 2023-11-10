@@ -41,7 +41,9 @@ const login = async (req, res) => {
 
     const token = signToken({ userId: user.id, email, role: 'user' });
 
-    res.status(200).json({ message: `User ${user.email} has successfully logged in.` });
+    res.status(200)
+    .header('Authorization', `Bearer ${token}`)
+    .json({ message: `User ${user.email} has successfully logged in.` });
   } catch (error) {
     console.error(error);
     res.status(500).send("An error occurred while logging in.");
