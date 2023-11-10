@@ -8,7 +8,7 @@ const register = async (req, res) => {
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const userId = await registerUser(
+    await registerUser(
       email,
       hashedPassword,
       name,
