@@ -15,9 +15,7 @@ const register = async (req, res) => {
       profile_picture,
       city_id
     );
-
-    const token = signToken({ userId, email });
-
+    
     res.status(201).json({ token });
   } catch (error) {
     console.error(error);
@@ -41,7 +39,7 @@ const login = async (req, res) => {
       return res.status(401).json({ message: "Authentication failed" });
     }
 
-    const token = signToken({ userId: user.id, email });
+    const token = signToken({ userId: user.id, email, role: 'user' });
 
     res.status(200).json({ token });
   } catch (error) {
