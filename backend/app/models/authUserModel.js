@@ -14,7 +14,7 @@ const registerUser = async (
       [email, password, name, profile_picture, city]
     );
 
-    return result.rows[0].id;
+    return result.rows[0];
   } catch (error) {
     throw error;
   }
