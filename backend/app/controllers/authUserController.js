@@ -8,7 +8,7 @@ const register = async (req, res) => {
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    await registerUser(
+    const user = await registerUser(
       email,
       hashedPassword,
       name,
@@ -16,7 +16,7 @@ const register = async (req, res) => {
       city
     );
     
-    res.status(201).json({ "pesan": "sukses" });
+    res.status(201).json({ message: `User ${user.email} has been successfully registered.` });
   } catch (error) {
     console.error(error);
     res.status(500).send("An error occurred while registering the user.");
@@ -41,7 +41,9 @@ const login = async (req, res) => {
 
     const token = signToken({ userId: user.id, email, role: 'user' });
 
-    res.status(200).json({ token });
+    res.status(200)
+    .header('Authorization', `Bearer ${token}`)
+    .json({ message: `User ${user.email} has successfully logged in.` });
   } catch (error) {
     console.error(error);
     res.status(500).send("An error occurred while logging in.");
