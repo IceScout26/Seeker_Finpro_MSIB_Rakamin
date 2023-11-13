@@ -16,7 +16,7 @@ const register = async (req, res) => {
       city
     );
     
-    res.status(201).json({ message: `User ${user.email} has been successfully registered.` });
+    res.status(201).json({ message: `User ${user.email} has been successfully registered, welcome ${user.name}!` });
   } catch (error) {
     console.error(error);
     res.status(500).send("An error occurred while registering the user.");
