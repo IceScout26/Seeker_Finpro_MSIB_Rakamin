@@ -8,7 +8,7 @@ function signToken(data) {
 //cara pemakaian --> app.use('/', verifyToken('user'), userRouter);
 function verifyToken(role) {
   return (req, res, next) => {
-    const token = req.body.token;
+    const token = req.body.token; //masih perlu cari cara transfer token
 
     if (!token) {
       return res.status(401).json({ message: 'Unauthorized' });
@@ -23,7 +23,7 @@ function verifyToken(role) {
         return res.status(403).json({ message: 'Forbidden' });
       }
 
-      req.user = decoded;
+      req.userId = decoded.userId;
       next();
     });
   };
