@@ -29,3 +29,48 @@ VALUES
   ('microsoft@mail.com', 'microsoft', 'Microsoft', 'microsoft.png', 'Microsoft adalah perusahaan yang bergerak di bidang teknologi', 'New York'),
   ('foodish@gmail.com', 'foodish', 'Foodish', 'foodish.png', 'Foodish adalah perusahaan yang bergerak di bidang makanan', 'Lampung'),
   ('rakamin@gmail.com', 'rakamin', 'Rakamin', 'rakamin.png', 'Rakamin adalah perusahaan yang bergerak di bidang edukasi', 'Jakarta');
+
+INSERT INTO job (company_id, title, description, expertise, salary, due_date, status)
+VALUES
+  (1, 'Software Engineer', 'Developing and maintaining software applications', 'Software Development', 80000, '2023-12-31', 'Open'),
+  (2, 'Data Analyst', 'Analyzing and interpreting complex data sets', 'Data Analysis', 60000, '2023-11-30', 'Open'),
+  (3, 'Marketing Specialist', 'Creating and executing marketing campaigns', 'Marketing', 70000, '2023-12-15', 'Open'),
+  (1, 'Network Administrator', 'Managing and maintaining network infrastructure', 'Network Administration', 75000, '2023-12-20', 'Open');
+
+INSERT INTO skill (skill)
+VALUES
+  ('Frontend'),
+  ('Backend'),
+  ('Fullstack'),
+  ('Mobile'),
+  ('Desktop'),
+  ('Web'),
+  ('Database'),
+  ('Cloud'),
+  ('DevOps'),
+  ('UI/UX');
+
+INSERT INTO "user" (email, password, name, profile_picture, birthday, description, cv, city, education_id, experience_id, skill_id, level_id)
+VALUES
+  ('aselole@gmail.com','scipio','Aceng','aceng.png','1996-08-01','I was a tech enthusias','aceng.pdf','Jakarta',1,1,1,1),
+  ('budibrodi@gmail.com','12678kio','Budi','budi.png','1997-08-01','I was a tech enthusias','budi.pdf','Semarang',2,2,2,2),
+  ('andiwudi@gmail.com','skilogoceng','Andi','andi.png','1998-08-01','I was a tech enthusias','andi.pdf','Bandung',3,3,3,3),
+  ('waluyo@gmail.com','waluyowaluyo','Waluyo','waluyo.png','1999-08-01','I was a tech enthusias','waluyo.pdf','Surabaya',4,4,4,4),
+  ('arnold@gmail.com','arnoldarnold','Arnold','arnold.png','2000-08-01','I was a tech enthusias','arnold.pdf','Bali',5,5,5,5);
+
+
+INSERT INTO certification (name, skill_id, user_id, link_certification)
+VALUES
+  ('Rakamin FSWD', 6, 1, 'https://Rakamin.drive.com'),
+  ('Compose Camp', 4, 2, 'https://ComposeCamp.drive.com'),
+  ('Google Cloud', 8, 3, 'https://GoogleCloud.drive.com'),
+  ('AWS', 8, 4, 'https://AWS.drive.com'),
+  ('Microsoft Azure', 8, 5, 'https://MicrosoftAzure.drive.com');
+
+INSERT INTO application (user_id, job_id)
+VALUES
+  (1, 1),
+  (2, 2),
+  (3, 3),
+  (4, 4),
+  (5, 1);
