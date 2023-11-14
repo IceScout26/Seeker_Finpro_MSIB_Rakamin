@@ -8,7 +8,7 @@ function signToken(data) {
 //cara pemakaian --> app.use('/', verifyToken('user'), userRouter);
 function verifyToken(role) {
   return (req, res, next) => {
-    const token = req.body.token; //masih perlu cari cara transfer token
+    const token = req.body.token; // bisa pakai HTTP header didapat dari axios --> const authHeader = req.headers["authorization"]; const token = authHeader.split(" ")[1];
 
     if (!token) {
       return res.status(401).json({ message: 'Unauthorized' });

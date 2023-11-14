@@ -10,7 +10,7 @@ const registerUser = async (
   try {
     // Tambahkan logika untuk mengeksekusi query ke database untuk mendaftarkan pengguna
     const result = await pool.query(
-      'INSERT INTO "user" (email, password, name, profile_picture, city) VALUES ($1, $2, $3, $4, $5) RETURNING id',
+      'INSERT INTO "user" (email, password, name, profile_picture, city) VALUES ($1, $2, $3, $4, $5) RETURNING *',
       [email, password, name, profile_picture, city]
     );
 
