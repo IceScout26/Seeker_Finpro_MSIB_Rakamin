@@ -6,6 +6,11 @@ const register = async (req, res) => {
   const { email, password, name, profile_picture, city } = req.body;
 
   try {
+    const existingCompany = await findCompanyByEmail(email);
+    if (existingCompany) {
+      return res.status(400).json({ message: 'Email is already registered' });
+    }
+    
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const company = await registerCompany(
