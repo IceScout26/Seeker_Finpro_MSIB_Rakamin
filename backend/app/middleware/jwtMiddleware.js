@@ -5,10 +5,11 @@ function signToken(data) {
   return token;
 }
 
-//cara pemakaian --> app.use('/', verifyToken('user'), userRouter);
+//cara pemakaian --> app.use('/', verifyToken(['user']), userRouter);
 function verifyToken(role) {
   return (req, res, next) => {
-    const token = req.body.token; //masih perlu cari cara transfer token
+    const authHeader = req.headers["authorization"]; 
+    const token = authHeader.split(" ")[1];
 
     if (!token) {
       return res.status(401).json({ message: 'Unauthorized' });
@@ -23,7 +24,7 @@ function verifyToken(role) {
         return res.status(403).json({ message: 'Forbidden' });
       }
 
-      req.userId = decoded.userId;
+      req.accountId = decoded.accountId; // dipakai seperti ini di route --> const userId = req.accountId;
       next();
     });
   };
