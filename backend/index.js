@@ -8,7 +8,6 @@ const profileUserRouter = require('./app/routes/profileUserRoute');
 const app = express();
 
 app.use(morgan('dev'));
-
 app.use(express.json());
 
 app.use('/authuser', authUserRouter);
