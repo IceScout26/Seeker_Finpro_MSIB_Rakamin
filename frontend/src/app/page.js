@@ -1,5 +1,6 @@
 import Image from 'next/image'
-import { Register } from '../components/Register.jsx'
+// import { Register } from '../components/Register.jsx'
+import { Register } from './register/page.jsx'
 
 export default function Home() {
   return (
