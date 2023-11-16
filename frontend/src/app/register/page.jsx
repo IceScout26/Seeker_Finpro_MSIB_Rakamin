@@ -6,8 +6,15 @@ Renders a navigation component with a sticky header, containing a logo and a lin
 
 import logo from '../../../public/assets/logo.webp'
 import Image from 'next/image'
+import SelectComp from '../../components/select.jsx'
+import { getProvinces } from '../../lib/city.js'
 
 export default async function Register() {
+  const provinces = await getProvinces();
+  const renderList = () => {
+    return (provinces.map(province =>({label:province.name, value:province.name})))
+  }
+
   return (
     <div className="container h-full w-screen">
       <div className="w-4/5 h-screen bg-white ml-32 my-20 rounded-xl shadow-lg flex items-center">
@@ -43,6 +50,7 @@ export default async function Register() {
                 <div className="border-gray-300 border-b-2 ml-3 mr-7 mb-4"></div>
               </div>
               <div className='w-1/2 text-gray-800'>
+                <SelectComp options={renderList()} />
               </div>
               <div className="">
                 <button className="mt-3 mb-2 py-1 bg-blue-600 text-white rounded-2xl px-5">
