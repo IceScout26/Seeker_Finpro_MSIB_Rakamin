@@ -1,0 +1,1 @@
+// jobPostingModel.js
