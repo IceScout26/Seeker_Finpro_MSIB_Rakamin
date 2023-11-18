@@ -1,37 +1,20 @@
-'use client'
 /**
 Renders a navigation component with a sticky header, containing a logo and a link to take a quiz.
 @component
 @returns {JSX.Element} The rendered navigation component.
 */
 
-import { useState, useEffect } from 'react'
-import logo from '../../public/assets/logo.webp'
+import logo from '../../../public/assets/logo.webp'
 import Image from 'next/image'
-import Select from 'react-select'
-import { getProvinces } from '../lib/city'
+import SelectComp from '../../components/select.jsx'
+import { getProvinces } from '../../lib/city.js'
 
-const options = [
-  { value: 'chocolate', label: 'Chocolate' },
-  { value: 'strawberry', label: 'Strawberry' },
-  { value: 'vanilla', label: 'Vanilla' }
-]
-
-export const Register = () => {
-  const [provinces, setProvinces] = useState()
-  
-  useEffect(() => {
-    async function handleApi(){
-      const result = await getProvinces()
-      // const responses = await result.json()
-      setProvinces(result)
-      console.log(result)
-    } 
-    handleApi()
-  }, []);
+export default async function Register() {
+  const provinces = await getProvinces();
   const renderList = () => {
-    return (provinces.map(province =>({label:province.Name,value:province.value})))
-   }
+    return (provinces.map(province =>({label:province.name, value:province.name})))
+  }
+
   return (
     <div className="container h-full w-screen">
       <div className="w-4/5 h-screen bg-white ml-32 my-20 rounded-xl shadow-lg flex items-center">
@@ -66,8 +49,8 @@ export const Register = () => {
                 <input type="email" className="mt-3 ml-4 mb-2 px-2 py-1 bg-white placeholder-black focus:outline-none focus:border-white focus:ring-white block sm:text-xs focus:ring-1" placeholder="Gmail"/>
                 <div className="border-gray-300 border-b-2 ml-3 mr-7 mb-4"></div>
               </div>
-              <div className='w-1/2'>
-                {/* <Select options={renderList()} /> */}
+              <div className='w-1/2 text-gray-800'>
+                <SelectComp options={renderList()} />
               </div>
               <div className="">
                 <button className="mt-3 mb-2 py-1 bg-blue-600 text-white rounded-2xl px-5">

@@ -1,19 +1,19 @@
 const bcrypt = require("bcrypt");
 const { signToken } = require('../middleware/jwtMiddleware');
-const { registerUser, findUserByEmail } = require("../models/authUserModel");
+const { registerCompany, findCompanyByEmail } = require("../models/authCompanyModel");
 
 const register = async (req, res) => {
   const { email, password, name, profile_picture, city } = req.body;
 
   try {
-    const existingUser = await findUserByEmail(email);
-    if (existingUser) {
+    const existingCompany = await findCompanyByEmail(email);
+    if (existingCompany) {
       return res.status(400).json({ message: 'Email is already registered' });
     }
-
+    
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const user = await registerUser(
+    const company = await registerCompany(
       email,
       hashedPassword,
       name,
@@ -21,10 +21,10 @@ const register = async (req, res) => {
       city
     );
     
-    res.status(201).json({ message: `User ${user.email} has been successfully registered, welcome ${user.name}!` });
+    res.status(201).json({ message: `Company ${company.email} has been successfully registered, welcome ${company.name}!` });
   } catch (error) {
     console.error(error);
-    res.status(500).send("An error occurred while registering the user.");
+    res.status(500).send("An error occurred while registering the company.");
   }
 };
 
@@ -32,19 +32,19 @@ const login = async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    const user = await findUserByEmail(email);
+    const company = await findCompanyByEmail(email);
 
-    if (!user) {
+    if (!company) {
       return res.status(401).json({ message: "Authentication failed" });
     }
 
-    const isPasswordValid = await bcrypt.compare(password, user.password);
+    const isPasswordValid = await bcrypt.compare(password, company.password);
 
     if (!isPasswordValid) {
       return res.status(401).json({ message: "Authentication failed" });
     }
 
-    const token = signToken({ accountId: user.id, role: 'user' });
+    const token = signToken({ accountId: company.id, role: 'company' });
 
     res.header('Authorization', `Bearer ${token}`).status(200).json({ token });
   } catch (error) {
