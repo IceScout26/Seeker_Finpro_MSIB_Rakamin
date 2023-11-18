@@ -24,10 +24,11 @@ const getUserProfileController = async (req, res) => {
 };
 
 const updateUserProfileController = async (req, res) => {
-  const userId = req.params.userId;
+  const userId = req.accountId; // pakai accountId dari JWT token
   const newData = req.body;
 
   try {
+    // update dengan accountId dari JWT token
     const updatedProfile = await updateUserProfileById(userId, newData);
     res.status(200).json(updatedProfile);
   } catch (error) {

@@ -8,6 +8,6 @@ router.use(verifyToken('user'));
 
 router.get('/user', getAllUserProfilesController);
 router.get('/user/:userId', getUserProfileController);
-router.put('/user/:userId', updateUserProfileController);
+router.put('/user', updateUserProfileController);
 
 module.exports = router;
