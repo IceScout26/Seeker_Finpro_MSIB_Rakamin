@@ -6,7 +6,7 @@ Renders a navigation component with a sticky header, containing a logo and a lin
 */
 
 import { useState, useEffect } from 'react'
-import logo from './assets/logo.webp'
+import logo from '../../public/assets/logo.webp'
 import Image from 'next/image'
 import Select from 'react-select'
 import { getProvinces } from '../lib/city'
@@ -67,7 +67,7 @@ export const Register = () => {
                 <div className="border-gray-300 border-b-2 ml-3 mr-7 mb-4"></div>
               </div>
               <div className='w-1/2'>
-                <Select options={renderList()} />
+                {/* <Select options={renderList()} /> */}
               </div>
               <div className="">
                 <button className="mt-3 mb-2 py-1 bg-blue-600 text-white rounded-2xl px-5">
