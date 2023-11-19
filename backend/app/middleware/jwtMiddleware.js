@@ -5,7 +5,6 @@ function signToken(data) {
   return token;
 }
 
-//cara pemakaian --> app.use('/', verifyToken(['user']), userRouter);
 function verifyToken(role) {
   return (req, res, next) => {
     const authHeader = req.headers["authorization"]; 

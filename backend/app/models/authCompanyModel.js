@@ -16,6 +16,7 @@ const registerCompany = async (
         password,
         name,
         profile_picture || 'default_profile_picture.jpg',
+        'No description available.',
         city || 'Unknown City'
       ]
     );
