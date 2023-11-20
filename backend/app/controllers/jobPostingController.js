@@ -2,14 +2,14 @@
 const JobPostingModel = require('../models/jobPostingModel');
 
 const allJobsController = async (req, res) => {
-    try {
-      const allJobs = await JobPostingModel.getAllJobs();
-      res.status(200).json(allJobs);
-    } catch (error) {
-      console.error(error);
-      res.status(500).send('Internal Server Error');
-    }
-  };
+  try {
+    const allJobs = await JobPostingModel.getAllJobs();
+    res.status(200).json(allJobs);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
+};
 
 const companyJobsController = async (req, res) => {
   const companyId = req.accountId;
@@ -28,7 +28,7 @@ const specificJobController = async (req, res) => {
 
   try {
     const job = await JobPostingModel.getSpecificJob(jobId);
-    
+
     if (!job) {
       return res.status(404).json({ message: 'Job not found' });
     }
@@ -41,11 +41,11 @@ const specificJobController = async (req, res) => {
 };
 
 const companyPostJobController = async (req, res) => {
+  const companyId = req.accountId;
   const jobData = req.body;
-  jobData.company_id = req.accountId;
 
   try {
-    const newJob = await JobPostingModel.postJob(jobData);
+    const newJob = await JobPostingModel.postJob(companyId, jobData);
     res.status(201).json(newJob);
   } catch (error) {
     console.error(error);
@@ -55,10 +55,22 @@ const companyPostJobController = async (req, res) => {
 
 const companyDeleteJobController = async (req, res) => {
   const jobId = req.params.jobId;
+  const companyId = req.accountId;
 
   try {
+
+    const job = await JobPostingModel.getSpecificJob(jobId);
+
+    if (!job) {
+      return res.status(404).json({ message: 'Job not found' });
+    }
+
+    if (job.company_id !== companyId) {
+      return res.status(403).json({ message: 'Forbidden: You do not have permission to delete this job.' });
+    }
+
     const deletedJob = await JobPostingModel.deleteJob(jobId);
-    
+
     if (!deletedJob) {
       return res.status(404).json({ message: 'Job not found' });
     }
