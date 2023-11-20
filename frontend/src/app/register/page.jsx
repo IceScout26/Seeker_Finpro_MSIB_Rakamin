@@ -16,7 +16,7 @@ export default async function Register() {
   }
 
   return (
-    <div className="container h-full w-screen">
+    <div className="container h-full w-full">
       <div className="w-4/5 h-screen bg-white ml-32 my-20 rounded-xl shadow-lg flex items-center">
         <div className='w-1/2'>
           {/* div for logo */}
