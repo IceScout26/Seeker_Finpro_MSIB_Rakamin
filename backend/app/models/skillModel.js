@@ -9,6 +9,16 @@ const getAllSkills = async () => {
   }
 };
 
+const getSkillsByName = async (name) => {
+  try {
+    const result = await pool.query('SELECT * FROM "skill" WHERE LOWER("skill") LIKE $1', [`%${name.toLowerCase()}%`]);
+    return result.rows;
+  } catch (error) {
+    throw error;
+  }
+};
+
 module.exports = {
   getAllSkills,
+  getSkillsByName,
 };
