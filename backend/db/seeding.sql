@@ -34,8 +34,8 @@ INSERT INTO job (company_id, title, description, expertise, salary, due_date, st
 VALUES
   (1, 'Software Engineer', 'Developing and maintaining software applications', 'Software Development', 80000, '2023-12-31', 'Open'),
   (2, 'Data Analyst', 'Analyzing and interpreting complex data sets', 'Data Analysis', 60000, '2023-11-30', 'Open'),
-  (3, 'Marketing Specialist', 'Creating and executing marketing campaigns', 'Marketing', 70000, '2023-12-15', 'Open'),
-  (1, 'Network Administrator', 'Managing and maintaining network infrastructure', 'Network Administration', 75000, '2023-12-20', 'Open');
+  (3, 'Marketing Specialist', 'Creating and executing marketing campaigns', 'Marketing', 70000, '2023-12-15', 'Close'),
+  (1, 'Network Administrator', 'Managing and maintaining network infrastructure', 'Network Administration', 75000, '2023-12-20', 'Close');
 
 INSERT INTO skill (skill)
 VALUES
@@ -64,10 +64,10 @@ VALUES
   ('arnold@gmail.com','$2a$12$RXQNWEuM/PSXlgydxwrT0.JPE6vYp6zW1oxT3r26MFmRbm85locWS','Arnold','arnold.png','2000-08-01','I was a tech enthusias','arnold.pdf','Bali',5,5,5,5);
 
 
-INSERT INTO application (user_id, job_id)
+INSERT INTO application (user_id, job_id, status)
 VALUES
-  (1, 1),
-  (2, 2),
-  (3, 3),
-  (4, 4),
-  (5, 1);
+  (1, 1, 'Accepted'),
+  (2, 2, 'Decline'),
+  (3, 3, 'Waiting'),
+  (4, 4, 'Accepted'),
+  (5, 1, 'Decline');
