@@ -6,6 +6,7 @@ const skillRouter = require('./app/routes/skillRoute');
 const profileUserRouter = require('./app/routes/profileUserRoute');
 const userPhotoRouter = require('./app/routes/userPhotoRoute');
 const userExperienceRouter = require('./app/routes/userExperienceRoute');
+const userEduRouter = require('./app/routes/userEduRoute'); // Tambahkan rute userEdu
 
 const app = express();
 
@@ -18,7 +19,8 @@ app.use('/skill', skillRouter);
 app.use('/profileusers', profileUserRouter);
 app.use('/profilephotos', userPhotoRouter);
 app.use('/experiences', userExperienceRouter);
+app.use('/usereducation', userEduRouter); // Gunakan rute userEdu
 
-app.listen(3000, () => {
-  console.log('Server berjalan di http://localhost:3000');
+app.listen(5000, () => {
+  console.log('Server berjalan di http://localhost:5000');
 });
