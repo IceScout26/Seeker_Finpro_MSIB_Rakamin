@@ -52,20 +52,17 @@ VALUES
 
 INSERT INTO "user" (email, password, name, profile_picture, birthday, description, cv, city, education_id, experience_id, skill_id, level_id)
 VALUES
-  ('aselole@gmail.com','scipio','Aceng','aceng.png','1996-08-01','I was a tech enthusias','aceng.pdf','Jakarta',1,1,1,1),
-  ('budibrodi@gmail.com','12678kio','Budi','budi.png','1997-08-01','I was a tech enthusias','budi.pdf','Semarang',2,2,2,2),
-  ('andiwudi@gmail.com','skilogoceng','Andi','andi.png','1998-08-01','I was a tech enthusias','andi.pdf','Bandung',3,3,3,3),
-  ('waluyo@gmail.com','waluyowaluyo','Waluyo','waluyo.png','1999-08-01','I was a tech enthusias','waluyo.pdf','Surabaya',4,4,4,4),
-  ('arnold@gmail.com','arnoldarnold','Arnold','arnold.png','2000-08-01','I was a tech enthusias','arnold.pdf','Bali',5,5,5,5);
+  -- ('aselole@gmail.com','scipio','Aceng','aceng.png','1996-08-01','I was a tech enthusias','aceng.pdf','Jakarta',1,1,1,1),
+  -- ('budibrodi@gmail.com','12678kio','Budi','budi.png','1997-08-01','I was a tech enthusias','budi.pdf','Semarang',2,2,2,2),
+  -- ('andiwudi@gmail.com','skilogoceng','Andi','andi.png','1998-08-01','I was a tech enthusias','andi.pdf','Bandung',3,3,3,3),
+  -- ('waluyo@gmail.com','waluyowaluyo','Waluyo','waluyo.png','1999-08-01','I was a tech enthusias','waluyo.pdf','Surabaya',4,4,4,4),
+  -- ('arnold@gmail.com','arnoldarnold','Arnold','arnold.png','2000-08-01','I was a tech enthusias','arnold.pdf','Bali',5,5,5,5);
+  ('aselole@gmail.com','$2a$12$cuIrloOo7C8TrVPHWQASP.V6dIgjmqVzgoyyNPOBBGhleJEnvuDlC','Aceng','aceng.png','1996-08-01','I was a tech enthusias','aceng.pdf','Jakarta',1,1,1,1),
+  ('budibrodi@gmail.com','$2a$12$NaFLm1zdc0WQjsJT/gWmi.0T0zJBpVUkIWD.BZYrYvPoR.Whkh8MK','Budi','budi.png','1997-08-01','I was a tech enthusias','budi.pdf','Semarang',2,2,2,2),
+  ('andiwudi@gmail.com','$2a$12$8c6lbzsxZAiG5nXkMJ5n4uZAJKuzMPBZmGzYTMrc8dS5saauWZ85u','Andi','andi.png','1998-08-01','I was a tech enthusias','andi.pdf','Bandung',3,3,3,3),
+  ('waluyo@gmail.com','$2a$12$/JaDpl6QK3TRqS.oSvVV7utq3Em/fBL3lg6ofoJefQIB3IaITc5i2','Waluyo','waluyo.png','1999-08-01','I was a tech enthusias','waluyo.pdf','Surabaya',4,4,4,4),
+  ('arnold@gmail.com','$2a$12$RXQNWEuM/PSXlgydxwrT0.JPE6vYp6zW1oxT3r26MFmRbm85locWS','Arnold','arnold.png','2000-08-01','I was a tech enthusias','arnold.pdf','Bali',5,5,5,5);
 
-
-INSERT INTO certification (name, skill_id, user_id, link_certification)
-VALUES
-  ('Rakamin FSWD', 6, 1, 'https://Rakamin.drive.com'),
-  ('Compose Camp', 4, 2, 'https://ComposeCamp.drive.com'),
-  ('Google Cloud', 8, 3, 'https://GoogleCloud.drive.com'),
-  ('AWS', 8, 4, 'https://AWS.drive.com'),
-  ('Microsoft Azure', 8, 5, 'https://MicrosoftAzure.drive.com');
 
 INSERT INTO application (user_id, job_id)
 VALUES
