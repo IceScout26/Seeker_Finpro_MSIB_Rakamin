@@ -46,10 +46,10 @@ const deleteUserEduByIdController = async (req, res) => {
 
   try {
     await deleteUserEduById(userId, eduId);
-    res.status(204).end();
+    res.status(204).json({ message: "User education data deleted successfully" });
   } catch (error) {
     console.error(error);
-    res.status(500).send("An error occurred while deleting user education data.");
+    res.status(500).json({ error: "An error occurred while deleting user education data." });
   }
 };
 
