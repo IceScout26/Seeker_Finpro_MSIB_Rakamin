@@ -8,8 +8,8 @@ const profileUserRouter = require('./app/routes/profileUserRoute');
 const userPhotoRouter = require('./app/routes/userPhotoRoute');
 const userExperienceRouter = require('./app/routes/userExperienceRoute');
 const userEduRouter = require('./app/routes/userEduRoute'); // Tambahkan rute userEdu
-const jobPostingUserRouter = require('/app/routes/jobPostingUserRoute');
-const jobPostingCompanyRouter = require('/app/routes/jobPostingCompanyRoute');
+const jobPostingUserRouter = require('./app/routes/jobPostingUserRoute');
+const jobPostingCompanyRouter = require('./app/routes/jobPostingCompanyRoute');
 
 const app = express();
 
