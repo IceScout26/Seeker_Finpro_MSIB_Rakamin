@@ -6,9 +6,9 @@ const { companyJobsController, specificJobController, companyPostJobController, 
 
 router.use(verifyToken('company'));
 
-router.get('/', companyJobsController); 
-router.get('/:jobId', specificJobController); 
-router.post('/', companyPostJobController);
-router.delete('/:jobId', companyDeleteJobController); 
+router.get('/company', companyJobsController); 
+router.get('/company/:jobId', specificJobController); 
+router.post('/company', companyPostJobController);
+router.delete('/company/:jobId', companyDeleteJobController); 
 
 module.exports = router;

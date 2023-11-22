@@ -6,7 +6,8 @@ const { allJobsController, specificJobController } = require('../controllers/job
 
 router.use(verifyToken('user'));
 
-router.get('/', allJobsController); //model getalljobs
-router.get('/:jobId', specificJobController); //model getspecificjob
+router.get('/user', allJobsController); 
+router.get('/user/:jobId', specificJobController); 
+router.get('/user/:name', getJobByNameController); 
 
 module.exports = router;

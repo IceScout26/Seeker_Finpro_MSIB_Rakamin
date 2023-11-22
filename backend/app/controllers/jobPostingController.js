@@ -82,10 +82,28 @@ const companyDeleteJobController = async (req, res) => {
   }
 };
 
+const getJobByNameController = async (req, res) => {
+  const name = req.params.name;
+
+  try {
+    const job = await JobPostingModel.getJobByName(name);
+
+    if (!job) {
+      return res.status(404).json({ message: 'Job not found' });
+    }
+
+    res.status(200).json(job);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
+};
+
 module.exports = {
   allJobsController,
   companyJobsController,
   specificJobController,
   companyPostJobController,
   companyDeleteJobController,
+  getJobByNameController,
 };
