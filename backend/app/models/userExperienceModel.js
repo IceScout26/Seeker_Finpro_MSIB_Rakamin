@@ -15,7 +15,7 @@ const getExperienceById = async (experienceId) => {
 
 const createExperience = async (newExperience) => {
   const { company_name, start, end, position } = newExperience;
-
+  console.log(newExperience)
   try {
     const result = await pool.query(
       'INSERT INTO "experience" (company_name, start, "end", position) VALUES ($1, $2, $3, $4) RETURNING *',

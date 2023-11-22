@@ -19,7 +19,7 @@ const getExperienceByIdController = async (req, res) => {
 
 const createExperienceController = async (req, res) => {
   const newExperience = req.body;
-
+  console.log(req.body)
   try {
     const createdExperience = await createExperience(newExperience);
     res.status(201).json({ success: true, data: createdExperience, message: "Experience created successfully." });

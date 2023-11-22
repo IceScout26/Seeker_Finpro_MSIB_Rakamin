@@ -11,9 +11,12 @@ const userEduRouter = require('./app/routes/userEduRoute'); // Tambahkan rute us
 
 const app = express();
 
+app.use(cors())
+
 app.use(morgan('dev'));
 app.use(express.json());
-app.use(cors());
+app.use(express.urlencoded({extended: true}))
+
 
 app.use('/authuser', authUserRouter);
 app.use('/authcompany', authCompanyRouter);

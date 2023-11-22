@@ -1,3 +1,4 @@
+"use client";
 /**
 Renders a navigation component with a sticky header, containing a logo and a link to take a quiz.
 @component
@@ -6,8 +7,26 @@ Renders a navigation component with a sticky header, containing a logo and a lin
 
 import logo from "../../../../public/assets/logo.webp";
 import Image from "next/image";
+import React, { useState, useEffect } from "react";
 
-export default async function Explore() {
+export default function Explore() {
+  const [userData, setUserData] = useState([]);
+  async function getUserExplore() {
+    const API = await fetch("http://localhost:5000/profileusers/user", {
+      method: "GET",
+      headers: {
+        Type: "application/json",
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50SWQiOjEsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzAwNTcwMjM4LCJleHAiOjE3MDA2NTY2Mzh9.cmpjWHKAXZgD5vCQwd0iarxX79C0o4T1AinrZzeQl3A",
+      },
+    });
+    const data = await API.json();
+    setUserData(data);
+  }
+  useEffect(() => {
+    getUserExplore();
+    console.log(userData);
+  }, []);
   return (
     <div className="container h-full w-full bg-white">
       <div className="h-28 flex justify-center">
@@ -18,141 +37,26 @@ export default async function Explore() {
         />
       </div>
       <div className="container">
-        <div className="flex justify-center mb-3">
-          <div className="h-24 w-5/6 border-2 border-black rounded-2xl bg-gray-100 shadow-xl cursor-pointer">
-            <div className="grid grid-cols-3">
-              <div className="h-16 w-16 border-2 border-black bg-slate-200 ml-4 mt-4 text-center">
-                FOTO
+        <div className="flex justify-center mb-3 flex-col gap-2 items-center">
+          {userData.map((user, id) => {
+            return (
+              <div key={id} className="w-5/6 border-2 p-4 border-black rounded-2xl bg-gray-100 shadow-xl cursor-pointer">
+                <div className="flex items-center gap-2">
+                  <div className="h-16 w-16 border-2 border-black bg-slate-200 text-center">
+                    FOTO
+                  </div>
+                  <div className="grid grid-rows-3 flex-1">
+                    <div className="font-bold">{ user.name }</div>
+                    <div>{ user.skill_id }</div>
+                    <div>{ user.city }</div>
+                  </div>
+                  <div className="border-2 border-black text-center w-14 h-14 ml-64 rounded-full text-2xl flex items-center justify-center">
+                    { user.level_id }
+                  </div>
+                </div>
               </div>
-              <div className="grid grid-rows-3 ml-[-260px] mt-2">
-                <div className="font-bold">Muhammad Iqbal</div>
-                <div>Javascript, PHP, TailwindCSS, React, Next.js</div>
-                <div>Bandung, West</div>
-              </div>
-              <div className="border-2 border-black text-center w-14 h-14 ml-64 mt-5 rounded-full pt-2 text-2xl">
-                5
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="flex justify-center mb-3">
-          <div className="h-24 w-5/6 border-2 border-black rounded-2xl bg-gray-100 shadow-xl cursor-pointer">
-            <div className="grid grid-cols-3">
-              <div className="h-16 w-16 border-2 border-black bg-slate-200 ml-4 mt-4 text-center">
-                FOTO
-              </div>
-              <div className="grid grid-rows-3 ml-[-260px] mt-2">
-                <div className="font-bold">harits Taqiy</div>
-                <div>Javascript, PHP, TailwindCSS, React, Next.js</div>
-                <div>Depok, West</div>
-              </div>
-              <div className="border-2 border-black text-center w-14 h-14 ml-64 mt-5 rounded-full pt-2 text-2xl">
-                5
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="flex justify-center mb-3">
-          <div className="h-24 w-5/6 border-2 border-black rounded-2xl bg-gray-100 shadow-xl cursor-pointer">
-            <div className="grid grid-cols-3">
-              <div className="h-16 w-16 border-2 border-black bg-slate-200 ml-4 mt-4 text-center">
-                FOTO
-              </div>
-              <div className="grid grid-rows-3 ml-[-260px] mt-2">
-                <div className="font-bold">Dhimas</div>
-                <div>Javascript, PHP, TailwindCSS, React, Next.js</div>
-                <div>Jakarta, West</div>
-              </div>
-              <div className="border-2 border-black text-center w-14 h-14 ml-64 mt-5 rounded-full pt-2 text-2xl">
-                5
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="flex justify-center mb-3">
-          <div className="h-24 w-5/6 border-2 border-black rounded-2xl bg-gray-100 shadow-xl cursor-pointer">
-            <div className="grid grid-cols-3">
-              <div className="h-16 w-16 border-2 border-black bg-slate-200 ml-4 mt-4 text-center">
-                FOTO
-              </div>
-              <div className="grid grid-rows-3 ml-[-260px] mt-2">
-                <div className="font-bold">Gerry</div>
-                <div>Javascript, PHP, TailwindCSS, React, Next.js</div>
-                <div>Bandung, West</div>
-              </div>
-              <div className="border-2 border-black text-center w-14 h-14 ml-64 mt-5 rounded-full pt-2 text-2xl">
-                5
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="flex justify-center mb-3">
-          <div className="h-24 w-5/6 border-2 border-black rounded-2xl bg-gray-100 shadow-xl cursor-pointer">
-            <div className="grid grid-cols-3">
-              <div className="h-16 w-16 border-2 border-black bg-slate-200 ml-4 mt-4 text-center">
-                FOTO
-              </div>
-              <div className="grid grid-rows-3 ml-[-260px] mt-2">
-                <div className="font-bold">Dafa Wira Yuda</div>
-                <div>Javascript, PHP, TailwindCSS, React, Next.js</div>
-                <div>Jakarta, West</div>
-              </div>
-              <div className="border-2 border-black text-center w-14 h-14 ml-64 mt-5 rounded-full pt-2 text-2xl">
-                5
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="flex justify-center mb-3">
-          <div className="h-24 w-5/6 border-2 border-black rounded-2xl bg-gray-100 shadow-xl cursor-pointer">
-            <div className="grid grid-cols-3">
-              <div className="h-16 w-16 border-2 border-black bg-slate-200 ml-4 mt-4 text-center">
-                FOTO
-              </div>
-              <div className="grid grid-rows-3 ml-[-260px] mt-2">
-                <div className="font-bold">Elbert</div>
-                <div>Javascript, PHP, TailwindCSS, React, Next.js</div>
-                <div>Bandung, West</div>
-              </div>
-              <div className="border-2 border-black text-center w-14 h-14 ml-64 mt-5 rounded-full pt-2 text-2xl">
-                5
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="flex justify-center mb-3">
-          <div className="h-24 w-5/6 border-2 border-black rounded-2xl bg-gray-100 shadow-xl cursor-pointer">
-            <div className="grid grid-cols-3">
-              <div className="h-16 w-16 border-2 border-black bg-slate-200 ml-4 mt-4 text-center">
-                FOTO
-              </div>
-              <div className="grid grid-rows-3 ml-[-260px] mt-2">
-                <div className="font-bold">Risky Hadi</div>
-                <div>Javascript, PHP, TailwindCSS, React, Next.js</div>
-                <div>Bandung, West</div>
-              </div>
-              <div className="border-2 border-black text-center w-14 h-14 ml-64 mt-5 rounded-full pt-2 text-2xl">
-                5
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="flex justify-center mb-3">
-          <div className="h-24 w-5/6 border-2 border-black rounded-2xl bg-gray-100 shadow-xl cursor-pointer">
-            <div className="grid grid-cols-3">
-              <div className="h-16 w-16 border-2 border-black bg-slate-200 ml-4 mt-4 text-center">
-                FOTO
-              </div>
-              <div className="grid grid-rows-3 ml-[-260px] mt-2">
-                <div className="font-bold">Gerry</div>
-                <div>Javascript, PHP, TailwindCSS, React, Next.js</div>
-                <div>Bandung, West</div>
-              </div>
-              <div className="border-2 border-black text-center w-14 h-14 ml-64 mt-5 rounded-full pt-2 text-2xl">
-                5
-              </div>
-            </div>
-          </div>
+            );
+          })}
         </div>
       </div>
     </div>

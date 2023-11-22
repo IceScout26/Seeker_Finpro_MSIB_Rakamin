@@ -8,8 +8,13 @@ import logo from '../../../public/assets/logo.webp'
 import Image from 'next/image'
 import SelectComp from '../../components/select.jsx'
 import { getProvinces } from '../../lib/city.js'
+import React, { useState } from 'react'
 
-export default async function Register() {
+export default function Register() {
+  const [postUser, setPosttUser] = useState()
+  async function postUserRegister() {
+    const response = await fetch('')
+  }
   const provinces = await getProvinces();
   const renderList = () => {
     return (provinces.map(province =>({label:province.name, value:province.name})))
