@@ -1,5 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
+const cors = require('cors');
 const authUserRouter = require('./app/routes/authUserRoute');
 const authCompanyRouter = require('./app/routes/authCompanyRoute');
 const skillRouter = require('./app/routes/skillRoute');
@@ -12,6 +13,7 @@ const app = express();
 
 app.use(morgan('dev'));
 app.use(express.json());
+app.use(cors());
 
 app.use('/authuser', authUserRouter);
 app.use('/authcompany', authCompanyRouter);
