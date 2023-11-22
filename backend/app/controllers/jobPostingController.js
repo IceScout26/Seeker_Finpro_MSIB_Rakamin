@@ -53,6 +53,19 @@ const companyPostJobController = async (req, res) => {
   }
 };
 
+const updateJobStatusController = async (req, res) =>  {
+  const jobId = req.params.jobId;
+  const newStatus = req.body.status;
+
+  try {
+      const updatedJob = await JobPostingModel.updateJobStatus(jobId, newStatus);
+      res.status(200).json(updatedJob);
+  } catch (error) {
+      console.error(error);
+      res.status(500).send('Internal Server Error');
+  }
+}
+
 const companyDeleteJobController = async (req, res) => {
   const jobId = req.params.jobId;
   const companyId = req.accountId;
@@ -104,6 +117,7 @@ module.exports = {
   companyJobsController,
   specificJobController,
   companyPostJobController,
+  updateJobStatusController,
   companyDeleteJobController,
   getJobByNameController,
 };

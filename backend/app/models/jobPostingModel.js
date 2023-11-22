@@ -40,13 +40,25 @@ class JobPostingModel {
 
   static async postJob(companyId, jobData) {
     const { title, description, expertise, salary, due_date } = jobData;
-  
+
     try {
       const result = await pool.query(
         'INSERT INTO job (company_id, title, description, expertise, salary, due_date, status) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
         [companyId, title, description, expertise, salary, due_date, 'Open']
       );
-  
+
+      return result.rows[0];
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  static async updateJobStatus(jobId, newStatus) {
+    try {
+      const result = await pool.query(
+        'UPDATE "job" SET status = $1 WHERE id = $2 RETURNING *',
+        [newStatus, jobId]
+      );
       return result.rows[0];
     } catch (error) {
       throw error;

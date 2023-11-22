@@ -49,18 +49,6 @@ class ApplicationModel {
             throw error;
         }
     }
-
-    static async updateJobStatus(jobId, newStatus) {
-        try {
-            const result = await pool.query(
-                'UPDATE "job" SET status = $1 WHERE id = $2 RETURNING *',
-                [newStatus, jobId]
-            );
-            return result.rows[0];
-        } catch (error) {
-            throw error;
-        }
-    }
 }
 
 module.exports = ApplicationModel;
