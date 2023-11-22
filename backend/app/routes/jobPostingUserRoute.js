@@ -2,7 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const { verifyToken } = require('../middleware/jwtMiddleware.js');
-const { allJobsController, specificJobController } = require('../controllers/jobPostingController.js');
+const { allJobsController, specificJobController, getJobByNameController } = require('../controllers/jobPostingController.js');
 
 router.use(verifyToken('user'));
 
