@@ -10,12 +10,12 @@ const getAllUserEdu = async (userId) => {
   }
 };
 
-const createUserEdu = async (eduData) => {
+const createUserEdu = async (userId, eduData) => {
   const { name, gpa, major, start, end } = eduData;
 
   try {
     const result = await pool.query(
-      'INSERT INTO "education" (name, gpa, major, start, end) VALUES ($1, $2, $3, $4, $5) RETURNING *',
+      'INSERT INTO "education" (name, gpa, major, start, "end") VALUES ($1, $2, $3, $4, $5) RETURNING *',
       [name, gpa, major, start, end]
     );
 
@@ -25,12 +25,12 @@ const createUserEdu = async (eduData) => {
   }
 };
 
-const updateUserEduById = async (eduId, eduData) => {
+const updateUserEduById = async (userId, eduId, eduData) => {
   const { name, gpa, major, start, end } = eduData;
 
   try {
     const result = await pool.query(
-      'UPDATE "education" SET name = $1, gpa = $2, major = $3, start = $4, end = $5 WHERE id = $6 RETURNING *',
+      'UPDATE "education" SET name = $1, gpa = $2, major = $3, start = $4, "end" = $5 WHERE id = $6 RETURNING *',
       [name, gpa, major, start, end, eduId]
     );
 
@@ -40,7 +40,7 @@ const updateUserEduById = async (eduId, eduData) => {
   }
 };
 
-const deleteUserEduById = async (eduId) => {
+const deleteUserEduById = async (userId, eduId) => {
   try {
     const result = await pool.query('DELETE FROM "education" WHERE id = $1 RETURNING *', [eduId]);
     return result.rows[0];
