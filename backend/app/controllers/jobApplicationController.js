@@ -3,7 +3,7 @@ const ApplicationModel = require('../models/jobApplicationModel');
 
 const applyForJobController = async (req, res) => {
     const userId = req.accountId;
-    const jobId = req.body.jobId; //body atau params?
+    const jobId = req.params.jobId;
 
     try {
         const application = await ApplicationModel.createApplication(userId, jobId);
