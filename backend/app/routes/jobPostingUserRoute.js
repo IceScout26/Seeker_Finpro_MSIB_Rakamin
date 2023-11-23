@@ -2,11 +2,12 @@
 const express = require('express');
 const router = express.Router();
 const { verifyToken } = require('../middleware/jwtMiddleware.js');
-const { allJobsController, specificJobController } = require('../controllers/jobPostingController.js');
+const { allJobsController, specificJobController, getJobByNameController } = require('../controllers/jobPostingController.js');
 
 router.use(verifyToken('user'));
 
-router.get('/', allJobsController); //model getalljobs
-router.get('/:jobId', specificJobController); //model getspecificjob
+router.get('/user', allJobsController); 
+router.get('/user/:jobId', specificJobController); 
+router.get('/user/:name', getJobByNameController); 
 
 module.exports = router;
