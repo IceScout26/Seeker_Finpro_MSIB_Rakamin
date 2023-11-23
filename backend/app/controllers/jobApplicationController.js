@@ -26,7 +26,7 @@ const getApplicationsByUserController = async (req, res) => {
     }
 }
 
-  const getApplicationsByJobController = async (req, res) => {
+const getApplicationsByJobController = async (req, res) => {
     const jobId = req.params.jobId;
 
     try {
@@ -38,7 +38,7 @@ const getApplicationsByUserController = async (req, res) => {
     }
 }
 
-const updateApplicationStatusController = async (req, res) =>  {
+const updateApplicationStatusController = async (req, res) => {
     const applicationId = req.params.applicationId;
     const newStatus = req.body.status;
 
@@ -51,12 +51,45 @@ const updateApplicationStatusController = async (req, res) =>  {
     }
 }
 
+const userDeleteApplicationController = async (req, res) => {
+    const applicationId = req.params.applicationId;
+    const userId = req.accountId;
+    try {
+        const deletedApplication = await JobApplicationModel.deleteApplication(applicationId);
 
+        if (!deletedApplication) {
+            return res.status(404).json({ message: 'Application not found' });
+        }
 
+        res.status(200).json(deletedApplication);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+}
+
+const companyDeleteApplicationController = async (req, res) => {
+    const applicationId = req.params.applicationId;
+    const companyId = req.accountId;
+    try {
+        const deletedApplication = await JobApplicationModel.deleteApplication(applicationId);
+
+        if (!deletedApplication) {
+            return res.status(404).json({ message: 'Application not found' });
+        }
+
+        res.status(200).json(deletedApplication);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+}
 
 module.exports = {
     applyForJobController,
     getApplicationsByUserController,
     getApplicationsByJobController,
     updateApplicationStatusController,
+    userDeleteApplicationController,
+    companyDeleteApplicationController,
 };

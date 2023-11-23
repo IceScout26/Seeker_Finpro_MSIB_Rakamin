@@ -49,6 +49,15 @@ class ApplicationModel {
             throw error;
         }
     }
+
+    static async deleteApplication(applicationId) {
+        try {
+            const result = await pool.query('DELETE FROM application WHERE id = $1 RETURNING *', [applicationId]);
+            return result.rows[0];
+        } catch (error) {
+            throw error;
+        }
+    }
 }
 
 module.exports = ApplicationModel;
