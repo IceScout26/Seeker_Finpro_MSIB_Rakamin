@@ -106,49 +106,6 @@ export const UserNavigation = () => {
           </div>
         </div>
       </nav>
-
-      {/* <aside
-        id="logo-sidebar"
-        className="fixed top-0 left-0 z-100 w-64 h-screen pt-20 transition-transform -translate-x-full bg-slate-800 bg-opacity-50 border-r border-gray-800 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-800"
-        aria-label="Sidebar"
-      >
-        <div className="h-full px-3 pb-5 overflow-y-auto bg-slate-700 bg-opacity-50 dark:bg-gray-800">
-          <ul className="space-y-2 font-medium">
-            <li>
-              <a
-                href="#"
-                className="flex items-center p-2 text-white rounded-lg dark:text-white hover:bg-blue-700 dark:hover:bg-gray-700 group"
-              >
-                <Image src={dashboard} alt="" />
-
-                <span className="ms-3">Dashboard</span>
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="flex items-center p-2 text-white rounded-lg dark:text-white hover:bg-blue-700 dark:hover:bg-gray-700 group"
-              >
-                <Image src={leaderBoard} alt="" />
-                <span className="flex-1 ms-3 whitespace-nowrap">
-                  LeaderBoard
-                </span>
-                <span className="inline-flex items-center justify-center px-2 ms-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300"></span>
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="flex items-center p-2 text-white rounded-lg dark:text-white hover:bg-blue-700 dark:hover:bg-gray-700 group"
-              >
-                <Image src={order} alt="" />
-
-                <span className="flex-1 ms-3 whitespace-nowrap">Order</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </aside> */}
     </div>
   );
 };
