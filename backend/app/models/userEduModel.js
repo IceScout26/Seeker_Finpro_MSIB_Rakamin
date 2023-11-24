@@ -40,7 +40,7 @@ const updateUserEduById = async (userId, eduId, eduData) => {
   }
 };
 
-const deleteUserEduById = async (userId, eduId) => {
+const deleteUserEduById = async (eduId) => {
   try {
     const result = await pool.query('DELETE FROM "education" WHERE id = $1 RETURNING *', [eduId]);
     return result.rows[0];
