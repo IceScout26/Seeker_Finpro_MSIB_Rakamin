@@ -2,6 +2,16 @@
 const pool = require('../config/config');
 
 class ApplicationModel {
+    static async getApplicationDetails(applicationId) {
+        try {
+          const result = await pool.query('SELECT * FROM "application" WHERE id = $1', [applicationId]);
+        
+          return result.rows[0];
+        } catch (error) {
+          throw error;
+        }
+      }
+
     static async createApplication(userId, jobId) {
         try {
             const result = await pool.query(

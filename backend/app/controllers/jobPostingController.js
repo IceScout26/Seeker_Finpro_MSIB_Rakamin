@@ -1,5 +1,5 @@
 // jobPostingController.js
-const JobPostingModel = require('../models/jobPostingModel');
+const JobPostingModel = require("../models/jobPostingModel");
 
 const allJobsController = async (req, res) => {
   try {
@@ -7,7 +7,7 @@ const allJobsController = async (req, res) => {
     res.status(200).json(allJobs);
   } catch (error) {
     console.error(error);
-    res.status(500).send('Internal Server Error');
+    res.status(500).send("Internal Server Error");
   }
 };
 
@@ -19,7 +19,7 @@ const companyJobsController = async (req, res) => {
     res.status(200).json(companyJobs);
   } catch (error) {
     console.error(error);
-    res.status(500).send('Internal Server Error');
+    res.status(500).send("Internal Server Error");
   }
 };
 
@@ -30,13 +30,13 @@ const specificJobController = async (req, res) => {
     const job = await JobPostingModel.getSpecificJob(jobId);
 
     if (!job) {
-      return res.status(404).json({ message: 'Job not found' });
+      return res.status(404).json({ message: "Job not found" });
     }
 
     res.status(200).json(job);
   } catch (error) {
     console.error(error);
-    res.status(500).send('Internal Server Error');
+    res.status(500).send("Internal Server Error");
   }
 };
 
@@ -49,38 +49,47 @@ const companyPostJobController = async (req, res) => {
     res.status(201).json(newJob);
   } catch (error) {
     console.error(error);
-    res.status(500).send('Internal Server Error');
+    res.status(500).send("Internal Server Error");
   }
 };
 
-const updateJobStatusController = async (req, res) =>  {
+const updateJobStatusController = async (req, res) => {
   const jobId = req.params.jobId;
   const newStatus = req.body.status;
 
   try {
-      const updatedJob = await JobPostingModel.updateJobStatus(jobId, newStatus);
-      res.status(200).json(updatedJob);
+    const updatedJob = await JobPostingModel.updateJobStatus(jobId, newStatus);
+    res.status(200).json(updatedJob);
   } catch (error) {
-      console.error(error);
-      res.status(500).send('Internal Server Error');
+    console.error(error);
+    res.status(500).send("Internal Server Error");
   }
-}
+};
 
 const companyDeleteJobController = async (req, res) => {
   const jobId = req.params.jobId;
   const companyId = req.accountId;
 
   try {
-    const deletedJob = await JobPostingModel.deleteJob(jobId, companyId);
+    const job = await JobPostingModel.getSpecificJob(jobId);
+
+    if (!job) {
+      return res.status(404).json({ message: "Job not found" });
+    }
+
+    if (job.company_id !== companyId) {
+      return res.status(403).json({ message: "Forbidden: You do not have permission to delete this job." });
+    }
+    const deletedJob = await JobPostingModel.deleteJob(jobId);
 
     if (!deletedJob) {
-      return res.status(404).json({ message: 'Job not found' });
+      return res.status(404).json({ message: "Job not found" });
     }
 
     res.status(200).json(deletedJob);
   } catch (error) {
     console.error(error);
-    res.status(500).send('Internal Server Error');
+    res.status(500).send("Internal Server Error");
   }
 };
 
@@ -91,13 +100,13 @@ const getJobByNameController = async (req, res) => {
     const job = await JobPostingModel.getJobByName(name);
 
     if (!job) {
-      return res.status(404).json({ message: 'Job not found' });
+      return res.status(404).json({ message: "Job not found" });
     }
 
     res.status(200).json(job);
   } catch (error) {
     console.error(error);
-    res.status(500).send('Internal Server Error');
+    res.status(500).send("Internal Server Error");
   }
 };
 
