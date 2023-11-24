@@ -71,18 +71,7 @@ const companyDeleteJobController = async (req, res) => {
   const companyId = req.accountId;
 
   try {
-
-    const job = await JobPostingModel.getSpecificJob(jobId);
-
-    if (!job) {
-      return res.status(404).json({ message: 'Job not found' });
-    }
-
-    if (job.company_id !== companyId) {
-      return res.status(403).json({ message: 'Forbidden: You do not have permission to delete this job.' });
-    }
-
-    const deletedJob = await JobPostingModel.deleteJob(jobId);
+    const deletedJob = await JobPostingModel.deleteJob(jobId, companyId);
 
     if (!deletedJob) {
       return res.status(404).json({ message: 'Job not found' });
