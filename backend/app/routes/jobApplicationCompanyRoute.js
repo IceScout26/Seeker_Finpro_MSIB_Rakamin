@@ -8,7 +8,6 @@ router.use(verifyToken('company'));
 
 router.get('/company/applications/:jobId', getApplicationsByJobController);
 router.put('/company/applications/:applicationId', updateApplicationStatusController);
-
-//router.delete('/company/applications/:applicationId', companyDeleteApplicationController);
+router.delete('/company/applications/:applicationId', companyDeleteApplicationController);
 
 module.exports = router;

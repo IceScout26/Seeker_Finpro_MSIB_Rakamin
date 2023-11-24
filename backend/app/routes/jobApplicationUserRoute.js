@@ -6,8 +6,8 @@ const { applyForJobController, getApplicationsByUserController, userDeleteApplic
 
 router.use(verifyToken('user'));
 
-router.post('/user/apply', applyForJobController);
+router.post('/user/apply/:jobId', applyForJobController);
 router.get('/user/applications', getApplicationsByUserController);
-//router.delete('/user/applications/:applicationId', userDeleteApplicationController);
+router.delete('/user/applications/:applicationId', userDeleteApplicationController);
 
 module.exports = router;
