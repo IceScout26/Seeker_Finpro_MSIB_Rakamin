@@ -11,6 +11,7 @@ const userEduRouter = require('./app/routes/userEduRoute');
 const jobPostingUserRouter = require('./app/routes/jobPostingUserRoute');
 const jobPostingCompanyRouter = require('./app/routes/jobPostingCompanyRoute');
 const userLevelRouter = require('./app/routes/userLevelRoute');
+const profileCompanyRouter = require('./app/routes/profileCompanyRoute');
 
 const app = express();
 
@@ -31,6 +32,7 @@ app.use('/usereducation', userEduRouter);
 app.use('/jobuser', jobPostingUserRouter);
 app.use('/jobcompany', jobPostingCompanyRouter);
 app.use('/userlevel', userLevelRouter);
+app.use('/profilecompany', profileCompanyRouter);
 
 app.listen(5000, () => {
   console.log('Server berjalan di http://localhost:5000');
