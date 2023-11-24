@@ -59,7 +59,24 @@ const userDeleteApplicationController = async (req, res) => {
   const userId = req.accountId;
 
   try {
-    const deletedApplication = await JobApplicationModel.deleteApplication(
+    const application = await ApplicationModel.getApplicationDetails(
+      applicationId
+    );
+
+    if (!application) {
+      return res.status(404).json({ message: "Application not found" });
+    }
+
+    if (userId !== application.user_id) {
+      return res
+        .status(403)
+        .json({
+          message:
+            "Forbidden: You do not have permission to delete this application.",
+        });
+    }
+
+    const deletedApplication = await ApplicationModel.deleteApplication(
       applicationId
     );
 
@@ -77,9 +94,32 @@ const userDeleteApplicationController = async (req, res) => {
 const companyDeleteApplicationController = async (req, res) => {
   const applicationId = req.params.applicationId;
   const companyId = req.accountId;
-  
+
   try {
-    const deletedApplication = await JobApplicationModel.deleteApplication(
+    const application = await ApplicationModel.getApplicationDetails(
+      applicationId
+    );
+
+    if (!application) {
+      return res.status(404).json({ message: "Application not found" });
+    }
+
+    const job = await JobPostingModel.getSpecificJob(application.job_id);
+
+    if (!job) {
+      return res.status(404).json({ message: "Job not found" });
+    }
+
+    if (companyId !== job.company_id) {
+      return res
+        .status(403)
+        .json({
+          message:
+            "Forbidden: You do not have permission to delete this application.",
+        });
+    }
+
+    const deletedApplication = await ApplicationModel.deleteApplication(
       applicationId
     );
 
