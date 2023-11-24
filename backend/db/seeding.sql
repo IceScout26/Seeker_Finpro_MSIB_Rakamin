@@ -24,11 +24,16 @@ VALUES
 
 INSERT INTO company (email, password, name, profile_picture, description, city)
 VALUES
-  ('majumundur@economic.com', 'majumundur', 'Maju Mundur', 'majumundur.png', 'Maju Mundur adalah perusahaan yang bergerak di bidang ekonomi', 'Jakarta'),
-  ('edutech@edu.com', 'edutech', 'EduTech', 'edutech.png', 'EduTech adalah perusahaan yang bergerak di bidang edukasi', 'IKN'),
-  ('microsoft@mail.com', 'microsoft', 'Microsoft', 'microsoft.png', 'Microsoft adalah perusahaan yang bergerak di bidang teknologi', 'New York'),
-  ('foodish@gmail.com', 'foodish', 'Foodish', 'foodish.png', 'Foodish adalah perusahaan yang bergerak di bidang makanan', 'Lampung'),
-  ('rakamin@gmail.com', 'rakamin', 'Rakamin', 'rakamin.png', 'Rakamin adalah perusahaan yang bergerak di bidang edukasi', 'Jakarta');
+  ('majumundur@economic.com', '$2a$12$t9/.IrP4B7LLrhq8/Yzwb.rMal0x/unFP49oeeXNhGGF4em2/Brsq', 'Maju Mundur', 'majumundur.png', 'Maju Mundur adalah perusahaan yang bergerak di bidang ekonomi', 'Jakarta'),
+  ('edutech@edu.com', '$2a$12$Z7O.P.ZS/Lm2DU69vr1HyOyE5c5IpYjkKJPieJotKvDap6dQpfQbC', 'EduTech', 'edutech.png', 'EduTech adalah perusahaan yang bergerak di bidang edukasi', 'IKN'),
+  ('microsoft@mail.com', '$2a$12$8H5FoKo4STys4EywkHvQs.8v7mCfVIc45MmLAk42rN26XJsgyMkj2', 'Microsoft', 'microsoft.png', 'Microsoft adalah perusahaan yang bergerak di bidang teknologi', 'New York'),
+  ('foodish@gmail.com', '$2a$12$tX76se7Sftr7G30JtGvi7.0LvnpjpqdBY1MqfBhJ56uc4D2Rs3E0e', 'Foodish', 'foodish.png', 'Foodish adalah perusahaan yang bergerak di bidang makanan', 'Lampung'),
+  ('rakamin@gmail.com', '$2a$12$l0XDle5NSOVOl.TRwqgDqe.G9cv.LPBOha4RgZtKFovJEHvyQGBoS', 'Rakamin', 'rakamin.png', 'Rakamin adalah perusahaan yang bergerak di bidang edukasi', 'Jakarta');
+  -- ('majumundur@economic.com', 'majumundur', 'Maju Mundur', 'majumundur.png', 'Maju Mundur adalah perusahaan yang bergerak di bidang ekonomi', 'Jakarta'),
+  -- ('edutech@edu.com', 'edutech', 'EduTech', 'edutech.png', 'EduTech adalah perusahaan yang bergerak di bidang edukasi', 'IKN'),
+  -- ('microsoft@mail.com', 'microsoft', 'Microsoft', 'microsoft.png', 'Microsoft adalah perusahaan yang bergerak di bidang teknologi', 'New York'),
+  -- ('foodish@gmail.com', 'foodish', 'Foodish', 'foodish.png', 'Foodish adalah perusahaan yang bergerak di bidang makanan', 'Lampung'),
+  -- ('rakamin@gmail.com', 'rakamin', 'Rakamin', 'rakamin.png', 'Rakamin adalah perusahaan yang bergerak di bidang edukasi', 'Jakarta');
 
 INSERT INTO job (company_id, title, description, expertise, salary, due_date, status)
 VALUES
