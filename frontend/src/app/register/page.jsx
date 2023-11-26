@@ -1,3 +1,4 @@
+"use client";
 /**
 Renders a navigation component with a sticky header, containing a logo and a link to take a quiz.
 @component
@@ -7,18 +8,39 @@ Renders a navigation component with a sticky header, containing a logo and a lin
 import logo from '../../../public/assets/logo.webp'
 import Image from 'next/image'
 import SelectComp from '../../components/select.jsx'
+import Loader from "../../../public/assets/loader/Sayap.gif"
 import { getProvinces } from '../../lib/city.js'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 export default function Register() {
-  const [postUser, setPosttUser] = useState()
-  async function postUserRegister() {
-    const response = await fetch('')
+  const [isLoading, setIsLoading] = useState(false)
+  const [province, setProvince] = useState({})
+  async function inputRegister(event) {
+    event.preventDefault();
+    setIsLoading(true)
+    console.log(event)
+    const formData = new URLSearchParams (new FormData(event.target))
+    const inputData = await fetch('http://localhost:5000/authuser/register', {
+      method: "POST",
+      headers: {
+        Type: "application/json",
+        Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50SWQiOjEsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzAwODIwMjY1LCJleHAiOjE3MDA5MDY2NjV9.bZ0Yz7pSxjkD2B3hqo5Er_jMFk-eP4esrN0E3ZemRS0",
+      },
+        body: formData,
+    });
+    const data = await inputData.json();
+    setIsLoading(false);
+    console.log(data)
   }
-  const provinces = await getProvinces();
-  const renderList = () => {
-    return (provinces.map(province =>({label:province.name, value:province.name})))
-  }
+  useEffect(() => {
+    const renderList = async () => {
+      const provinces = await getProvinces();
+      setProvince(provinces.map(province =>({label:province.name, value:province.name})))
+    }
+    renderList()
+    console.log(renderList())
+  }, []);
 
   return (
     <div className="container h-full w-full">
@@ -36,14 +58,14 @@ export default function Register() {
               <p className="font-semibold text-lg">Let's Join Us,</p>
               <p className="font-bold text-2xl">Our <span className="text-blue-500">Seeker</span></p>
           </div>
-          <form action="">
+          <form onSubmit={inputRegister}>
             <div className="w-full mr-10">
               <div>
-                <input type="text" className="mt-3 ml-4 mb-2 px-2 py-1 bg-white  placeholder-black placeholder-opacity-50 focus:outline-none focus:border-white focus:ring-white block sm:text-xs focus:ring-1" placeholder="Username"/>
+                <input type="text" name='name' className="mt-3 ml-4 mb-2 px-2 py-1 bg-white  placeholder-black placeholder-opacity-50 focus:outline-none focus:border-white focus:ring-white block sm:text-xs focus:ring-1" placeholder="Username"/>
                 <div className="border-gray-300 border-b-2 ml-3 mr-7 mb-4"></div>
               </div>
               <div>
-                <input type="password" className="mt-3 ml-4 mb-2 px-2 py-1 bg-white placeholder-black focus:outline-none focus:border-white focus:ring-white block sm:text-xs focus:ring-1" placeholder="Password"/>
+                <input type="password" name='password' className="mt-3 ml-4 mb-2 px-2 py-1 bg-white placeholder-black focus:outline-none focus:border-white focus:ring-white block sm:text-xs focus:ring-1" placeholder="Password"/>
                 <div className="border-gray-300 border-b-2 ml-3 mr-7 mb-4"></div>
               </div>
               <div>
@@ -51,16 +73,19 @@ export default function Register() {
                 <div className="border-gray-300 border-b-2 ml-3 mr-7 mb-4"></div>
               </div>
               <div>
-                <input type="email" className="mt-3 ml-4 mb-2 px-2 py-1 bg-white placeholder-black focus:outline-none focus:border-white focus:ring-white block sm:text-xs focus:ring-1" placeholder="Gmail"/>
+                <input type="email" name='email' className="mt-3 ml-4 mb-2 px-2 py-1 bg-white placeholder-black focus:outline-none focus:border-white focus:ring-white block sm:text-xs focus:ring-1" placeholder="Gmail"/>
                 <div className="border-gray-300 border-b-2 ml-3 mr-7 mb-4"></div>
               </div>
               <div className='w-1/2 text-gray-800'>
-                <SelectComp options={renderList()} />
+                <SelectComp options={province} />
               </div>
               <div className="">
-                <button className="mt-3 mb-2 py-1 bg-blue-600 text-white rounded-2xl px-5">
+                {
+                  isLoading ? <Image src={Loader} /> :
+                <button type='submit' className="mt-3 mb-2 py-1 bg-blue-600 text-white rounded-2xl px-5">
                   Register
                 </button>
+                }
               </div>
             </div>
           </form>
