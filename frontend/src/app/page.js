@@ -4,6 +4,10 @@ import { Register } from './register/page.jsx'
 import Explore from './company/explore/page.jsx'
 import Experiences from './user/experience/page.jsx'
 import School from './user/school/page.jsx'
+import Detail from './company/detail/page.jsx'
+import Login from './login/page.jsx'
+import UserHome from './user/home/page.jsx'
+
 
 export default function Home() {
   return (
@@ -12,6 +16,9 @@ export default function Home() {
       <Explore />
       <Experiences />
       <School />
+      <Detail />
+      <Login />
+      <UserHome />
     </main>
   )
 }

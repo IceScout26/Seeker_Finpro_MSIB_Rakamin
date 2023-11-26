@@ -6,8 +6,8 @@ import order from "../../public/assets/sidebar/shopping-cart.svg";
 
 export const UserNavigation = () => {
   return (
-    <div className="container h-screen w-screen">
-      <nav className="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+    <div className="container h-full w-screen">
+      <nav className="fixed top-0 z-50 w-full bg-blue-harits border-b border-gray-200 text-yellow-rizky dark:bg-gray-800 dark:border-gray-700">
         <div className="px-3 py-6 lg:px-6 lg:pl-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center justify-start">
@@ -27,8 +27,8 @@ export const UserNavigation = () => {
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    clip-rule="evenodd"
-                    fill-rule="evenodd"
+                    clipRule="evenodd"
+                    fillRule="evenodd"
                     d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
                   ></path>
                 </svg>

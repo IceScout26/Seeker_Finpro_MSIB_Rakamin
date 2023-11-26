@@ -41,15 +41,14 @@ const updateUserEduByIdController = async (req, res) => {
 };
 
 const deleteUserEduByIdController = async (req, res) => {
-  const userId = req.accountId;
   const eduId = req.params.eduId;
 
   try {
-    await deleteUserEduById(userId, eduId);
+    await deleteUserEduById(eduId);
     res.status(204).json({ message: "User education data deleted successfully" });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "An error occurred while deleting user education data." });
+    res.status(500).json({ message: "An error occurred while deleting user education data." });
   }
 };
 
