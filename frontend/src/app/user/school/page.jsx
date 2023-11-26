@@ -9,7 +9,7 @@ import Image from "next/image";
 
 export default async function School() {
   return (
-    <div className="w-full h-[calc(100vh-80px)] bg-white">
+    <div className="w-full h-screen bg-white">
       <div className="container w-full h-full bg-white flex justify-center items-center">
         <div className="w-1/2 border-2 border-black rounded-xl">
           <div className="p-5">
