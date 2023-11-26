@@ -8,10 +8,13 @@ const profileUserRouter = require('./app/routes/profileUserRoute');
 const userPhotoRouter = require('./app/routes/userPhotoRoute');
 const userExperienceRouter = require('./app/routes/userExperienceRoute');
 const userEduRouter = require('./app/routes/userEduRoute');
-const jobPostingUserRouter = require('./app/routes/jobPostingUserRoute');
-const jobPostingCompanyRouter = require('./app/routes/jobPostingCompanyRoute');
 const userLevelRouter = require('./app/routes/userLevelRoute');
 const profileCompanyRouter = require('./app/routes/profileCompanyRoute');
+const jobPostingUserRouter = require('./app/routes/jobPostingUserRoute');
+const jobPostingCompanyRouter = require('./app/routes/jobPostingCompanyRoute');
+const jobPostingDefaultRouter = require('./app/routes/jobPostingDefaultRoute');
+const jobApplicationUserRouter = require('./app/routes/jobApplicationUserRoute');
+const jobApplicationCompanyRouter = require('./app/routes/jobApplicationCompanyRoute');
 
 const app = express();
 
@@ -29,10 +32,15 @@ app.use('/profileusers', profileUserRouter);
 app.use('/profilephotos', userPhotoRouter);
 app.use('/experiences', userExperienceRouter);
 app.use('/usereducation', userEduRouter);
-app.use('/jobuser', jobPostingUserRouter);
-app.use('/jobcompany', jobPostingCompanyRouter);
 app.use('/userlevel', userLevelRouter);
 app.use('/profilecompany', profileCompanyRouter);
+
+app.use('/jobuser', jobPostingUserRouter);
+app.use('/jobcompany', jobPostingCompanyRouter);
+app.use('/job', jobPostingDefaultRouter);
+
+app.use('/applicationuser', jobApplicationUserRouter);
+app.use('/applicationcompany', jobApplicationCompanyRouter);
 
 app.listen(5000, () => {
   console.log('Server berjalan di http://localhost:5000');
