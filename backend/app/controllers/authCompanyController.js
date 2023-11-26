@@ -35,13 +35,13 @@ const login = async (req, res) => {
     const company = await findCompanyByEmail(email);
 
     if (!company) {
-      return res.status(401).json({ message: "Authentication failed" });
+      return res.status(401).json({ message: "Authentication failed, email doesn't exist." });
     }
 
     const isPasswordValid = await bcrypt.compare(password, company.password);
 
     if (!isPasswordValid) {
-      return res.status(401).json({ message: "Authentication failed" });
+      return res.status(401).json({ message: "Authentication failed, password is not correct." });
     }
 
     const token = signToken({ accountId: company.id, role: 'company' });
