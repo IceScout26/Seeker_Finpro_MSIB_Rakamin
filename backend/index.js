@@ -30,8 +30,10 @@ app.use('/authuser', authUserRouter);
 app.use('/authcompany', authCompanyRouter);
 app.use('/skill', skillRouter);
 app.use('/profileusers', profileUserRouter);
+
 app.use('/userphotos', userPhotoRouter);
 app.use('/companyphotos', companyPhotoRouter);
+
 app.use('/experiences', userExperienceRouter);
 app.use('/usereducation', userEduRouter);
 app.use('/userlevel', userLevelRouter);
