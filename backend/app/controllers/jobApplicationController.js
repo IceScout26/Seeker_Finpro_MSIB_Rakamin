@@ -55,12 +55,29 @@ const getApplicationsByJobController = async (req, res) => {
 const updateApplicationStatusController = async (req, res) => {
   const applicationId = req.params.applicationId;
   const newStatus = req.body.status;
+  const companyId = req.accountId;
 
   try {
+    const application = await ApplicationModel.getApplicationDetails(applicationId);
+
+    if (!application) {
+      return res.status(404).json({ message: "Application not found" });
+    }
+
+    // Check if the job's company is the same as the company that logged in
+    const job = await JobPostingModel.getSpecificJob(application.job_id);
+
+    if (!job || job.company_id !== companyId) {
+      return res.status(403).json({
+        message: "Forbidden: You do not have permission to update the status of this application.",
+      });
+    }
+
     const updatedApplication = await ApplicationModel.updateApplicationStatus(
       applicationId,
       newStatus
     );
+
     res.status(200).json(updatedApplication);
   } catch (error) {
     console.error(error);
