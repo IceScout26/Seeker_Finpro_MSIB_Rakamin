@@ -3,16 +3,22 @@ const morgan = require('morgan');
 const cors = require('cors');
 const authUserRouter = require('./app/routes/authUserRoute');
 const authCompanyRouter = require('./app/routes/authCompanyRoute');
-const skillRouter = require('./app/routes/skillRoute');
+
 const profileUserRouter = require('./app/routes/profileUserRoute');
+const profileCompanyRouter = require('./app/routes/profileCompanyRoute');
+
 const userPhotoRouter = require('./app/routes/userPhotoRoute');
+const companyPhotoRouter = require('./app/routes/companyPhotoRoute');
+
 const userExperienceRouter = require('./app/routes/userExperienceRoute');
 const userEduRouter = require('./app/routes/userEduRoute');
 const userLevelRouter = require('./app/routes/userLevelRoute');
-const profileCompanyRouter = require('./app/routes/profileCompanyRoute');
+const skillRouter = require('./app/routes/skillRoute');
+
 const jobPostingUserRouter = require('./app/routes/jobPostingUserRoute');
 const jobPostingCompanyRouter = require('./app/routes/jobPostingCompanyRoute');
 const jobPostingDefaultRouter = require('./app/routes/jobPostingDefaultRoute');
+
 const jobApplicationUserRouter = require('./app/routes/jobApplicationUserRoute');
 const jobApplicationCompanyRouter = require('./app/routes/jobApplicationCompanyRoute');
 
@@ -27,13 +33,17 @@ app.use(express.urlencoded({extended: true}))
 
 app.use('/authuser', authUserRouter);
 app.use('/authcompany', authCompanyRouter);
-app.use('/skill', skillRouter);
+
 app.use('/profileusers', profileUserRouter);
-app.use('/profilephotos', userPhotoRouter);
+app.use('/profilecompany', profileCompanyRouter);
+
+app.use('/userphotos', userPhotoRouter);
+app.use('/companyphotos', companyPhotoRouter);
+
 app.use('/experiences', userExperienceRouter);
 app.use('/usereducation', userEduRouter);
 app.use('/userlevel', userLevelRouter);
-app.use('/profilecompany', profileCompanyRouter);
+app.use('/skill', skillRouter);
 
 app.use('/jobuser', jobPostingUserRouter);
 app.use('/jobcompany', jobPostingCompanyRouter);

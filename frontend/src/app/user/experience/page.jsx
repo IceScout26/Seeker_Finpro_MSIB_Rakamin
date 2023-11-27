@@ -35,65 +35,52 @@ export default function Experiences() {
     }, 3000);
   }
   return (
-    <div className="w-full h-[calc(100vh-80px)] bg-white">
+    <div className="w-full h-screen bg-white">
       <div className="container w-full h-full bg-white flex justify-center items-center">
-        <div className="w-1/2 border-2 border-black rounded-xl">
+        <div className="w-1/2">
           <div className="p-5">
-            <div className="flex justify-center my-10">
-              <h1 className="font-bold">Experience Detail</h1>
+            <div className="flex justify-center my-16">
+              <h1 className="font-bold text-3xl">Experience Detail</h1>
             </div>
-            <form onSubmit={onSubmit} className="flex flex-col gap-2">
+            <div className=" flex flex-col gap-2">
               <div className="h-8 grid grid-cols-2">
                 <div className="flex justify-start">Position</div>
                 <input
-                  name="position"
                   type="text"
-                  className="border-2 border-black rounded-xl"
+                  className="border-gray-300 border-b-2 placeholder-black placeholder-opacity-50 focus:outline-none pl-2"
+                  placeholder="Front End"
                 />
               </div>
               <div className="h-8 grid grid-cols-2">
                 <div className="flex justify-start">Company Name</div>
                 <input
-                  name="company_name"
                   type="text"
-                  className="border-2 border-black rounded-xl"
+                  className="border-gray-300 border-b-2 placeholder-black placeholder-opacity-50 focus:outline-none pl-2"
+                  placeholder="PT Rakamin Academy"
                 />
               </div>
               <div className="h-8 grid grid-cols-2">
                 <div className="flex justify-start">Start</div>
                 <input
-                  name="start"
                   type="text"
-                  className="border-2 border-black rounded-xl"
+                  className="border-gray-300 border-b-2 placeholder-black placeholder-opacity-50 focus:outline-none pl-2"
+                  placeholder="2019"
                 />
               </div>
               <div className="h-8 grid grid-cols-2">
                 <div className="flex justify-start">End</div>
                 <input
-                  name="end"
                   type="text"
-                  className="border-2 border-black rounded-xl"
+                  className="border-gray-300 border-b-2 placeholder-black placeholder-opacity-50 focus:outline-none pl-2"
+                  placeholder="2022"
                 />
               </div>
-              {/* <Image src={Loader} /> */}
               <div className="flex justify-center pt-10">
-                {
-                  isLoading ? <Image src={Loader} /> : <button
-                  type="submit"
-                  className="border-2 border-black rounded-xl px-2 shadow-xl"
-                >
-                  Confirm
+                <button className="mt-3 mb-2 py-1 bg-blue-600 text-white rounded-2xl px-5">
+                    Confirm
                 </button>
-
-                }
-                {/* <button
-                  type="submit"
-                  className="border-2 border-black rounded-xl px-2 shadow-xl"
-                >
-                  Confirm
-                </button> */}
               </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>
