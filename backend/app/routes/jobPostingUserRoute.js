@@ -8,6 +8,6 @@ router.use(verifyToken('user'));
 
 router.get('/user', allJobsController); 
 router.get('/user/:jobId', specificJobController); 
-router.get('/user/:name', getJobByNameController); 
+router.get('/user/search/:name', getJobByNameController); 
 
 module.exports = router;
