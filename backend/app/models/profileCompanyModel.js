@@ -18,13 +18,13 @@ const getCompanyById = async (companyId) => {
   }
 };
 
-const updateCompany = async (newData) => {
-  const { id, name, profile_picture, description, city } = newData;
+const updateCompany = async (companyId, newData) => {
+  const { name, profile_picture, description, city } = newData;
 
   try {
     const result = await pool.query(
       'UPDATE "company" SET name = $1, profile_picture = $2, description = $3, city = $4 WHERE id = $5 RETURNING *',
-      [name, profile_picture, description, city, id]
+      [name, profile_picture, description, city, companyId]
     );
 
     return result.rows[0];
