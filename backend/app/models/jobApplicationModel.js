@@ -1,5 +1,5 @@
 //jobApplicationModel.js
-const pool = require('../config/config');
+const pool = require("../../config/config");
 
 class ApplicationModel {
     static async getApplicationDetails(applicationId) {
