@@ -7,7 +7,7 @@ import order from "../../public/assets/sidebar/shopping-cart.svg";
 export const UserNavigation = () => {
   return (
     <div className="container h-full w-screen">
-      <nav className="fixed top-0 z-50 w-full bg-blue-harits border-b border-gray-200 text-yellow-rizky dark:bg-gray-800 dark:border-gray-700">
+      <nav className="fixed top-0 z-50 w-full bg-blue-harits border-b border-gray-200 text-white dark:bg-gray-800 dark:border-gray-700">
         <div className="px-3 py-6 lg:px-6 lg:pl-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center justify-start">

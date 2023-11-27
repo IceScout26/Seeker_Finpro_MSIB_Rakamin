@@ -15,7 +15,9 @@ module.exports = {
       },
       colors: {
         'blue-harits': '#007DC7',
-        'yellow-rizky': '#FFCF31'
+        'yellow-rizky': '#FFCF31',
+        'blue-harits-dark': '#083D70',
+        'brown-gerry': '#514D4D'
       },
     },
   },

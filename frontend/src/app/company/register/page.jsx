@@ -5,11 +5,11 @@ Renders a navigation component with a sticky header, containing a logo and a lin
 @returns {JSX.Element} The rendered navigation component.
 */
 
-import logo from '../../../public/assets/logo.webp'
+import logo from '../../../../public/assets/logo.webp'
 import Image from 'next/image'
-import SelectComp from '../../components/select.jsx'
-import Loader from "../../../public/assets/loader/Sayap.gif"
-import { getProvinces } from '../../lib/city.js'
+import SelectComp from '../../../components/select.jsx'
+import Loader from "../../../../public/assets/loader/Sayap.gif"
+import { getProvinces } from '../../../lib/city.js'
 import React, { useEffect, useState } from 'react'
 
 export default function Register() {
@@ -43,8 +43,8 @@ export default function Register() {
   }, []);
 
   return (
-    <div className="container h-full w-full">
-      <div className="w-4/5 h-screen bg-white ml-32 my-20 rounded-xl shadow-lg flex items-center">
+    <div className="container h-full w-full bg-white flex justify-center">
+      <div className="w-4/5 h-screen bg-white ml-32 my-20 rounded-xl flex items-center">
         <div className='w-1/2'>
           {/* div for logo */}
           <Image
