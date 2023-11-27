@@ -67,6 +67,7 @@ class JobPostingModel {
 
   static async deleteJob(jobId) {
     try {
+      await pool.query('DELETE FROM application WHERE job_id = $1', [jobId]);
       const result = await pool.query('DELETE FROM job WHERE id = $1 RETURNING *', [jobId]);
       return result.rows[0];
     } catch (error) {
