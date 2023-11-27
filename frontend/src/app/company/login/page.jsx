@@ -6,9 +6,9 @@ Renders a navigation component with a sticky header, containing a logo and a lin
 */
 
 import Link from "next/link";
-import logo from "../../../public/assets/logo.webp";
+import logo from "../../../../public/assets/logo.webp";
 import Image from "next/image";
-import Loader from "../../../public/assets/loader/Sayap.gif";
+import Loader from "../../../../public/assets/loader/Sayap.gif";
 import React, { useState } from "react";
 
 export default function Login() {
@@ -48,10 +48,10 @@ export default function Login() {
   }
 
   return (
-    <div className="container h-full w-screen bg-yellow-800">
+    <div className="container h-full w-screen bg-white flex justify-center">
       <form
         onSubmit={inputLogin}
-        className="w-4/5 h-screen bg-white items-center ml-32 mr-80 my-20 rounded-xl shadow-lg"
+        className="w-4/5 h-screen bg-white items-center ml-32 mr-80 my-20"
       >
         <div className="w-full px-3">
           <div className="ml-12 tracking-wide text-black text-3xl mb-6 pt-20 pl-28 text-center">
