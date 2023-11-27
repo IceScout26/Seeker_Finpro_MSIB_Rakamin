@@ -1,5 +1,6 @@
 //jobApplicationController.js
 const ApplicationModel = require("../models/jobApplicationModel");
+const JobPostingModel = require("../models/jobPostingModel");
 
 const applyForJobController = async (req, res) => {
   const userId = req.accountId;
@@ -28,9 +29,22 @@ const getApplicationsByUserController = async (req, res) => {
 
 const getApplicationsByJobController = async (req, res) => {
   const jobId = req.params.jobId;
+  const companyId = req.accountId;
 
   try {
+    const job = await JobPostingModel.getSpecificJob(jobId);
+
+    if (!job || job.company_id !== companyId) {
+      return res
+      .status(403)
+      .json({ 
+        message: 
+        'Forbidden: You do not have permission to access applications for this job.' 
+      });
+    }
+
     const applications = await ApplicationModel.getApplicationsByJob(jobId);
+
     res.status(200).json(applications);
   } catch (error) {
     console.error(error);
@@ -106,11 +120,7 @@ const companyDeleteApplicationController = async (req, res) => {
 
     const job = await JobPostingModel.getSpecificJob(application.job_id);
 
-    if (!job) {
-      return res.status(404).json({ message: "Job not found" });
-    }
-
-    if (companyId !== job.company_id) {
+    if (!job || job.company_id !== companyId) {
       return res
         .status(403)
         .json({
