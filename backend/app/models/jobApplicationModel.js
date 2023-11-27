@@ -18,7 +18,7 @@ class ApplicationModel {
                 'SELECT * FROM "application" WHERE user_id = $1 AND job_id = $2',
                 [userId, jobId]
             );
-
+                //ngecek application duplikat
             if (existingApplication.rows.length > 0) {
                 throw new Error('Application already exists for this user and job.');
             }
