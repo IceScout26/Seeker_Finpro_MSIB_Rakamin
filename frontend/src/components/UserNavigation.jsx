@@ -1,13 +1,10 @@
 import Image from "next/image";
-import seekerLogo from "../../public/assets/sidebar/seeker-logo1.svg";
-import dashboard from "../../public/assets/sidebar/dashboard.svg";
-import leaderBoard from "../../public/assets/sidebar/leaderBoard.svg";
-import order from "../../public/assets/sidebar/shopping-cart.svg";
+import logoSeeker from "../../public/assets/logoseeker1.png";
 
 export const UserNavigation = () => {
   return (
     <div className="container h-full w-screen">
-      <nav className="fixed top-0 z-50 w-full bg-blue-harits border-b border-gray-200 text-white dark:bg-gray-800 dark:border-gray-700">
+      <nav className="fixed top-0 z-50 w-full bg-blue-harits border-b border-gray-200 text-white">
         <div className="px-3 py-6 lg:px-6 lg:pl-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center justify-start">
@@ -16,7 +13,7 @@ export const UserNavigation = () => {
                 data-drawer-toggle="logo-sidebar"
                 aria-controls="logo-sidebar"
                 type="button"
-                className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 "
               >
                 <span className="sr-only">Open sidebar</span>
                 <svg
@@ -33,19 +30,19 @@ export const UserNavigation = () => {
                   ></path>
                 </svg>
               </button>
-              <a href="https://www.yominovel.site" className="flex mr-7">
-                <Image src={seekerLogo} alt="" />
-                <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
+              <a href="https://www.yominovel.site" className="flex mr-7 items-center">
+                <Image src={logoSeeker} alt="" width={50} height={27} />
+                <span className="ml-5 backdrop:self-center text-lg font-semibold hover:text-yellow-rizky ">
                   Seeker
                 </span>
               </a>
               <a href="#" className="flex mr-7">
-                <span className="self-center text-lg font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
+                <span className="self-center text-lg font-semibold hover:text-yellow-rizky ">
                   Home
                 </span>
               </a>
               <a href="#" className="flex mr-7">
-                <span className="self-center text-lg font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
+                <span className="self-center text-lg font-semibold hover:text-yellow-rizky ">
                   Explore
                 </span>
               </a>
@@ -56,7 +53,7 @@ export const UserNavigation = () => {
                 <div className="pr-7">
                   <button
                     type="button"
-                    className="flex text-sm bg-white-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                    className="flex text-sm bg-white-800 rounded-full focus:ring-4 focus:ring-gray-300 "
                     aria-expanded="false"
                     data-dropdown-toggle="dropdown-user"
                   >
@@ -80,7 +77,7 @@ export const UserNavigation = () => {
                 <div>
                   <button
                     type="button"
-                    className="flex text-sm bg-white-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                    className="flex text-sm bg-white-800 rounded-full focus:ring-4 focus:ring-gray-300 "
                     aria-expanded="false"
                     data-dropdown-toggle="dropdown-user"
                   >
@@ -97,6 +94,30 @@ export const UserNavigation = () => {
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <div className="pl-2">
+                  <button
+                    type="button"
+                    className="flex text-sm bg-white-800 rounded-full focus:ring-4 focus:ring-gray-300 "
+                    aria-expanded="false"
+                    data-dropdown-toggle="dropdown-user"
+                  >
+                    <span className="mr-2">Dhimas</span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-6 h-6"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M19.5 8.25l-7.5 7.5-7.5-7.5"
                       />
                     </svg>
                   </button>
