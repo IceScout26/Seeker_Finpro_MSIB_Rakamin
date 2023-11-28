@@ -46,7 +46,7 @@ const login = async (req, res) => {
 
     const token = signToken({ accountId: user.id, role: 'user' });
 
-    res.header('Authorization', `Bearer ${token}`).status(200).json({ token });
+    res.header('Authorization', `Bearer ${token}`).status(200).json({ message: `Welcome back, ${user.name}!`, token });
   } catch (error) {
     console.error(error);
     res.status(500).send("An error occurred while logging in.");
