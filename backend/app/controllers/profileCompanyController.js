@@ -29,9 +29,10 @@ const getCompanyByIdController = async (req, res) => {
 
 const updateCompanyController = async (req, res) => {
   const newData = req.body;
+  const companyId = req.accountId;
 
   try {
-    const updatedCompany = await updateCompany(newData);
+    const updatedCompany = await updateCompany(companyId, newData);
     res.status(200).json({ message: 'Company successfully updated', company: updatedCompany });
   } catch (error) {
     console.error(error);

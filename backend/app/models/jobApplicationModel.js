@@ -14,6 +14,15 @@ class ApplicationModel {
 
     static async createApplication(userId, jobId) {
         try {
+            const existingApplication = await pool.query(
+                'SELECT * FROM "application" WHERE user_id = $1 AND job_id = $2',
+                [userId, jobId]
+            );
+                //ngecek application duplikat
+            if (existingApplication.rows.length > 0) {
+                throw new Error('Application already exists for this user and job.');
+            }
+            
             const result = await pool.query(
                 'INSERT INTO "application" (user_id, job_id, status) VALUES ($1, $2, $3) RETURNING *',
                 [userId, jobId, 'Pending']
@@ -71,8 +80,3 @@ class ApplicationModel {
 }
 
 module.exports = ApplicationModel;
-
-
-
-
-

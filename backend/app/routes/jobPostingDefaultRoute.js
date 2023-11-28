@@ -5,6 +5,6 @@ const { allJobsController, specificJobController, getJobByNameController } = req
 
 router.get('/', allJobsController); 
 router.get('/:jobId', specificJobController); 
-router.get('/:name', getJobByNameController); 
+router.get('/search/:name', getJobByNameController); 
 
 module.exports = router;
