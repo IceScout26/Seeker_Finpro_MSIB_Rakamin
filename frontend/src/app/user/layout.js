@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
         <div className=''>
           <UserNavigation />
         </div>
-        <div className=''>
+        <div className='mt-20'>
           {children}
         </div>
       </body>
