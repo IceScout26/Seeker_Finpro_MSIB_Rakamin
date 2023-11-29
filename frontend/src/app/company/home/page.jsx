@@ -7,7 +7,7 @@ Renders a navigation component with a sticky header, containing a logo and a lin
 import logo from "../../../../public/assets/logo.webp";
 import Image from "next/image";
 
-export default async function CompanyHome() {
+export default async function companyHome() {
   return (
     <div className="container h-full w-full bg-white p-8">
       <h2 className="text-2xl font-semibold text-brown-gerry">
@@ -17,7 +17,7 @@ export default async function CompanyHome() {
         <div className="relative flex flex-col gap-2 p-6 text-white bg-blue-harits rounded-lg shadow-lg border border-gray-200">
           <span className="text-2xl">Total Posted Jobs</span>
           <span className="text-8xl font-semibold">5</span>
-          <div className="absolute right-5 top-10 right-10 bg-yellow-rizky rounded-full">
+          <div className="absolute top-10 right-16 bg-yellow-rizky rounded-full">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
