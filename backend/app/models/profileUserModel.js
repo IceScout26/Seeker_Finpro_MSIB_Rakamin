@@ -3,9 +3,27 @@ const pool = require("../../config/config");
 
 const getAllUsers = async () => {
   try {
-    const result = await pool.query(
-      'SELECT id, email, name, profile_picture, birthday, description, cv, city, education_id, experience_id, skill_id, level_id FROM "user"'
-    );
+    const result = await pool.query(`
+      SELECT 
+        u.id, 
+        u.email, 
+        u.name, 
+        u.profile_picture, 
+        u.birthday, 
+        u.description, 
+        u.cv, 
+        u.city, 
+        e.name as education_name,
+        ex.company_name as experience_company,
+        l.level as level_name,
+        s.skill as skill_name
+      FROM "user" u
+      LEFT JOIN "education" e ON u.education_id = e.id
+      LEFT JOIN "experience" ex ON u.experience_id = ex.id
+      LEFT JOIN "level" l ON u.level_id = l.id
+      LEFT JOIN "skill" s ON u.skill_id = s.id
+    `);
+
     return result.rows;
   } catch (error) {
     throw error;
@@ -14,10 +32,28 @@ const getAllUsers = async () => {
 
 const getUserById = async (userId) => {
   try {
-    const result = await pool.query(
-      'SELECT id, email, name, profile_picture, birthday, description, cv, city, education_id, experience_id, skill_id, level_id FROM "user" WHERE id = $1',
-      [userId]
-    );
+    const result = await pool.query(`
+      SELECT 
+        u.id, 
+        u.email, 
+        u.name, 
+        u.profile_picture, 
+        u.birthday, 
+        u.description, 
+        u.cv, 
+        u.city, 
+        e.name as education_name,
+        ex.company_name as experience_company,
+        l.level as level_name,
+        s.skill as skill_name
+      FROM "user" u
+      LEFT JOIN "education" e ON u.education_id = e.id
+      LEFT JOIN "experience" ex ON u.experience_id = ex.id
+      LEFT JOIN "level" l ON u.level_id = l.id
+      LEFT JOIN "skill" s ON u.skill_id = s.id
+      WHERE u.id = $1
+    `, [userId]);
+
     return result.rows[0];
   } catch (error) {
     throw error;
