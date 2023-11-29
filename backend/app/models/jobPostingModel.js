@@ -4,7 +4,9 @@ const pool = require("../../config/config");
 class JobPostingModel {
   static async getAllJobs() {
     try {
-      const result = await pool.query("SELECT * FROM job");
+      const result = await pool.query(
+        "SELECT job.*, company.name as company_name FROM job INNER JOIN company ON job.company_id = company.id"
+      );
       return result.rows;
     } catch (error) {
       throw error;
@@ -14,7 +16,7 @@ class JobPostingModel {
   static async getCompanyJobs(companyId) {
     try {
       const result = await pool.query(
-        "SELECT * FROM job WHERE company_id = $1",
+        'SELECT job.*, company.name as company_name FROM job INNER JOIN company ON job.company_id = company.id WHERE job.company_id = $1',
         [companyId]
       );
       return result.rows;
@@ -25,9 +27,10 @@ class JobPostingModel {
 
   static async getSpecificJob(jobId) {
     try {
-      const result = await pool.query("SELECT * FROM job WHERE id = $1", [
-        jobId,
-      ]);
+      const result = await pool.query(
+        'SELECT job.*, company.name as company_name FROM job INNER JOIN company ON job.company_id = company.id WHERE job.id = $1',
+        [jobId]
+      );
       return result.rows[0];
     } catch (error) {
       throw error;
@@ -37,7 +40,7 @@ class JobPostingModel {
   static async getJobByName(name) {
     try {
       const result = await pool.query(
-        'SELECT * FROM "job" WHERE LOWER("title") LIKE $1',
+        'SELECT job.*, company.name as company_name FROM "job" INNER JOIN company ON job.company_id = company.id WHERE LOWER(job.title) LIKE $1',
         [`%${name.toLowerCase()}%`]
       );
       return result.rows[0];
