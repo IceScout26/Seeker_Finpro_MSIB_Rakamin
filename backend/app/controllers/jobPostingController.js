@@ -56,8 +56,19 @@ const companyPostJobController = async (req, res) => {
 const updateJobStatusController = async (req, res) => {
   const jobId = req.params.jobId;
   const newStatus = req.body.status;
+  const companyId = req.accountId;
 
   try {
+    const job = await JobPostingModel.getSpecificJob(jobId);
+
+    if (!job) {
+      return res.status(404).json({ message: "Job not found" });
+    }
+
+    if (job.company_id !== companyId) {
+      return res.status(403).json({ message: "Forbidden: You do not have permission to update the status of this job." });
+    }
+    
     const updatedJob = await JobPostingModel.updateJobStatus(jobId, newStatus);
     res.status(200).json(updatedJob);
   } catch (error) {

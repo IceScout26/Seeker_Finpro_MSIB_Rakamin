@@ -11,7 +11,7 @@ import companyHome from './company/home/page.jsx'
 import userExplore from './user/explore/page.jsx'
 import companyProfile from './company/profile/page.jsx'
 import Profile from './user/profile/page.jsx'
-
+import Post from "./company/post/page.jsx";
 
 export default function Home() {
   return (

@@ -1,4 +1,4 @@
-export const CompanyJob = () => {
+export default function CompanyJob() {
   return (
     <div className="container h-full w-full bg-white">
       <div className="grid grid-rows-4 grid-flow-col gap-4 h-full w-full">
