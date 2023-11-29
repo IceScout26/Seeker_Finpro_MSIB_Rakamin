@@ -11,17 +11,22 @@ import Foto from "../../../../public/assets/dev/iqbal.jpg"
 
 import React, { useState, useEffect } from "react";
 
-export default function Explore() {
+export default function companyExplore() {
   const [userData, setUserData] = useState([]);
+  function getLocalStorage() {
+    const token = JSON.parse(localStorage.getItem('token'));
+    return token;
+  }
   async function getUserExplore() {
-    const API = await fetch("http://localhost:5000/profileusers/user", {
-      method: "GET",
-      headers: {
-        Type: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50SWQiOjEsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzAxMDE0MDQyLCJleHAiOjE3MDExMDA0NDJ9.A39IKE1KWnjazAOtMUohP6u4X8c1cxHWLFTaGDdtAMA",
-      },
-    });
+    const token = getLocalStorage();
+    if (token) {
+      const API = await fetch('http://localhost:5000/profileusers/user', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      });
     const data = await API.json();
     setUserData(data);
   }
@@ -83,4 +88,4 @@ export default function Explore() {
       </div>
     </div>
   );
-}
+}}

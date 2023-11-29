@@ -13,6 +13,7 @@ import React, { useState } from "react";
 
 export default function Login() {
   const [isLoading, setIsLoading] = useState(false);
+  const [notif, setNotif] = useState("");
   async function sendTokenToLocalstorage(token) {
     console.log(token);
     let today = new Date();
@@ -25,8 +26,8 @@ export default function Login() {
       token: token,
       date: today,
     };
-    localStorage.setItem("token",JSON.stringify(dataToken));
-    console.log(JSON.parse(localStorage.getItem("token")))
+    localStorage.setItem("token", JSON.stringify(dataToken));
+    console.log(JSON.parse(localStorage.getItem("token")));
   }
   async function inputLogin(event) {
     event.preventDefault();
@@ -43,68 +44,82 @@ export default function Login() {
     const data = await inputData.json();
     // localStorage.setItem("token", );
     setIsLoading(false);
-    // console.log(data);
+    // if (data.message === "succes") {
+    //   setNotif("Succesfully Login");
+      
+    // } else {
+    //   setNotif("Login Failed")
+    // }
+    setNotif("Succesfully Login");
+    console.log("test");
+    console.log(data);
     sendTokenToLocalstorage(data.token);
   }
 
   return (
-    <div className="container h-full w-screen bg-white flex justify-center">
+    <div className="container h-[calc(100vh-80px)] w-screen bg-white flex justify-center">
       <form
         onSubmit={inputLogin}
-        className="w-4/5 h-screen bg-white items-center ml-32 mr-80 my-20"
+        className="w-4/5 h-full bg-white flex items-center"
       >
-        <div className="w-full px-3">
-          <div className="ml-12 tracking-wide text-black text-3xl mb-6 pt-20 pl-28 text-center">
-            <p className="font-semibold text-3xl ml-9 mr-5 mb-3">Welcome,</p>
-            <p className="font-bold text-4xl ml-16 mr-0">
-              Our <span className="text-blue-500">Seeker</span>
-            </p>
-          </div>
-        </div>
-        <div className="flex h-96 items-center m-2 pb-5">
-          <div className="w-2/4 mb-16 ml-10">
+        <div className="flex items-center">
+          <div className="w-2/4">
             <Image className="-translate-y-50" src={logo} alt="" />
           </div>
-          <div className="w-2/4 mr-10">
-            <div>
-              <label htmlFor="email" className="text-2xl font-semibold ml-4">
-                Email
-              </label>
-              <input
-                type="text"
-                name="email"
-                className="mt-3 ml-2 px-2 py-1 bg-white  placeholder-gray-400 focus:outline-none focus:border-white focus:ring-white block sm:text-lg focus:ring-1"
-                placeholder="Input your email"
-              />
-              <div className="border-gray-300 border-b-2 ml-4 mr-7 mb-16"></div>
+          <div className="w-2/4 flex flex-col gap-8">
+            <div className="text-black text-3xl text-left">
+              <p className="font-semibold text-3xl">Welcome,</p>
+              <p className="font-bold text-4xl">
+                Our <span className="text-blue-500">Seeker</span>
+              </p>
             </div>
-            <div className="-mt-6">
-              <label htmlFor="password" className="text-2xl font-semibold ml-4">
-                Password
-              </label>
-              <input
-                type="password"
-                name="password"
-                className="mt-3 ml-2 px-2 py-1 bg-white  placeholder-gray-400 focus:outline-none focus:border-white focus:ring-white block sm:text-lg focus:ring-1"
-                placeholder="Input your password"
-              />
-              <div className="border-gray-300 border-b-2 ml-4 mr-7 mb-16"></div>
+            <div className="flex flex-col gap-4">
+              <div>
+                <label htmlFor="email" className="text-2xl font-semibold">
+                  Email
+                </label>
+                <input
+                  type="text"
+                  name="email"
+                  className="bg-white focus:outline-none mt-2 block sm:text-lg w-full focus:bg-white"
+                  placeholder="Input your email"
+                />
+                <div className="border-gray-300 border-b-2"></div>
+              </div>
+              <div className="">
+                <label htmlFor="password" className="text-2xl font-semibold">
+                  Password
+                </label>
+                <input
+                  type="password"
+                  name="password"
+                  className="bg-white  placeholder-gray-400 focus:outline-none focus:border-white focus:ring-white block sm:text-lg focus:ring-1"
+                  placeholder="Input your password"
+                />
+                <div className="border-gray-300 border-b-2"></div>
+              </div>
             </div>
-            <div className="text-left -mt-12">
+            {notif.length ? (
+              <div className="bg-green-400 flex justify-center text-white h-10 items-center rounded-lg">
+                <p>{notif}</p>
+              </div>
+            ) : (
+              <div></div>
+            )}
+
+            <div className="text-left">
               {isLoading ? (
                 <Image src={Loader} />
               ) : (
                 <button
                   type="submit"
-                  className="mt-3 ml-4 mb-2 py-2 bg-blue-600 text-white rounded-2xl px-14"
+                  className="bg-blue-600 text-white rounded-2xl px-9 py-2 mb-2"
                 >
                   Login
                 </button>
               )}
-              <h1 className="ml-4 mt-3 mb-16">
-                <span className="mr-3 text-black-700">
-                  Don't have account ?
-                </span>
+              <h1 className="">
+                <span className="text-black-700">Don't have account ?</span>
                 <Link href="/register"></Link>
                 <button className="text-blue-500">Register</button>
               </h1>

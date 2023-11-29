@@ -156,11 +156,11 @@ export default async function UserHome() {
           </div>
           <div className="flex justify-between items-center w-3/6 h-32 -translate-y-16 bg-white rounded-md text-center py-4 px-10">
             <div>
-              <span className="font-semibold text-2xl">+320</span> <br /> Jobs
+              <span className="font-semibold text-2xl">+320</span> <br /> Companys
             </div>
             <div>
               <span className="font-semibold text-2xl">+400</span> <br />{" "}
-              Companys
+              Jobs
             </div>
             <div>
               <span className="font-semibold text-2xl">+500</span> <br /> Users
