@@ -15,6 +15,10 @@ import React, { useEffect, useState } from 'react'
 export default function Register() {
   const [isLoading, setIsLoading] = useState(false)
   const [province, setProvince] = useState({})
+  const [notif, setNotif] = useState({
+    msg: '',
+    type: ''
+  });
   async function inputRegister(event) {
     event.preventDefault();
     setIsLoading(true)
@@ -30,8 +34,24 @@ export default function Register() {
         body: formData,
     });
     const data = await inputData.json();
-    setIsLoading(false);
     console.log(data)
+
+    // check notif type
+    if (data.message.indexOf('already registered') !== -1) {
+      const notifData = {
+        msg: data.message,
+        type: 'error'
+      }
+      setNotif(notifData);   
+    } else {
+      const notifData = {
+        msg: data.message,
+        type: 'success'
+      }
+      setNotif(notifData)
+      window.location.href = "http://localhost:3000/user/login";
+    }
+    setIsLoading(false);
   }
   useEffect(() => {
     const renderList = async () => {
@@ -79,6 +99,15 @@ export default function Register() {
               <div className='w-1/2 text-gray-800'>
                 <SelectComp options={province} />
               </div>
+              {notif.msg.length ? (
+              <div className={`${notif.type === 'error' ? 'bg-yellow-rizky' : 'bg-green-500'} flex justify-center text-white h-10 items-center rounded-lg mt-2`}>
+                <p>
+                  {notif.msg}
+                </p>
+              </div>
+              ) : (
+                <div></div>
+              )}
               <div className="">
                 {
                   isLoading ? <Image src={Loader} /> :
