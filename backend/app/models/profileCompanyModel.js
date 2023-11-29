@@ -2,7 +2,9 @@ const pool = require("../../config/config");
 
 const getAllCompanies = async () => {
   try {
-    const result = await pool.query('SELECT id, email, name, profile_picture, description, city FROM "company"');
+    const result = await pool.query(
+      'SELECT id, email, name, profile_picture, description, city FROM "company"'
+    );
     return result.rows;
   } catch (error) {
     throw error;
@@ -11,7 +13,10 @@ const getAllCompanies = async () => {
 
 const getCompanyById = async (companyId) => {
   try {
-    const result = await pool.query('SELECT id, email, name, profile_picture, description, city FROM "company" WHERE id = $1', [companyId]);
+    const result = await pool.query(
+      'SELECT id, email, name, profile_picture, description, city FROM "company" WHERE id = $1',
+      [companyId]
+    );
     return result.rows[0];
   } catch (error) {
     throw error;

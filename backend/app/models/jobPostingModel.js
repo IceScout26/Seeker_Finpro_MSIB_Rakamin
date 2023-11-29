@@ -4,7 +4,7 @@ const pool = require("../../config/config");
 class JobPostingModel {
   static async getAllJobs() {
     try {
-      const result = await pool.query('SELECT * FROM job');
+      const result = await pool.query("SELECT * FROM job");
       return result.rows;
     } catch (error) {
       throw error;
@@ -13,7 +13,10 @@ class JobPostingModel {
 
   static async getCompanyJobs(companyId) {
     try {
-      const result = await pool.query('SELECT * FROM job WHERE company_id = $1', [companyId]);
+      const result = await pool.query(
+        "SELECT * FROM job WHERE company_id = $1",
+        [companyId]
+      );
       return result.rows;
     } catch (error) {
       throw error;
@@ -22,7 +25,9 @@ class JobPostingModel {
 
   static async getSpecificJob(jobId) {
     try {
-      const result = await pool.query('SELECT * FROM job WHERE id = $1', [jobId]);
+      const result = await pool.query("SELECT * FROM job WHERE id = $1", [
+        jobId,
+      ]);
       return result.rows[0];
     } catch (error) {
       throw error;
@@ -31,7 +36,10 @@ class JobPostingModel {
 
   static async getJobByName(name) {
     try {
-      const result = await pool.query('SELECT * FROM "job" WHERE LOWER("title") LIKE $1', [`%${name.toLowerCase()}%`]);
+      const result = await pool.query(
+        'SELECT * FROM "job" WHERE LOWER("title") LIKE $1',
+        [`%${name.toLowerCase()}%`]
+      );
       return result.rows[0];
     } catch (error) {
       throw error;
@@ -43,8 +51,8 @@ class JobPostingModel {
 
     try {
       const result = await pool.query(
-        'INSERT INTO job (company_id, title, description, expertise, salary, due_date, status) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
-        [companyId, title, description, expertise, salary, due_date, 'Open']
+        "INSERT INTO job (company_id, title, description, expertise, salary, due_date, status) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *",
+        [companyId, title, description, expertise, salary, due_date, "Open"]
       );
 
       return result.rows[0];
@@ -67,8 +75,11 @@ class JobPostingModel {
 
   static async deleteJob(jobId) {
     try {
-      await pool.query('DELETE FROM application WHERE job_id = $1', [jobId]);
-      const result = await pool.query('DELETE FROM job WHERE id = $1 RETURNING *', [jobId]);
+      await pool.query("DELETE FROM application WHERE job_id = $1", [jobId]);
+      const result = await pool.query(
+        "DELETE FROM job WHERE id = $1 RETURNING *",
+        [jobId]
+      );
       return result.rows[0];
     } catch (error) {
       throw error;
@@ -77,4 +88,3 @@ class JobPostingModel {
 }
 
 module.exports = JobPostingModel;
-
