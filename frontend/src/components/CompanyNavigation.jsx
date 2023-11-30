@@ -1,5 +1,6 @@
 import Image from "next/image";
 import logoSeeker from "../../public/assets/logoseeker1.png";
+import Link from "next/link";
 
 export const CompanyNavigation = () => {
   return (
@@ -89,6 +90,7 @@ export const CompanyNavigation = () => {
                   </button>
                 </div>
                 <div className="pl-2">
+                  <Link href="/company/profile">
                   <button
                     type="button"
                     className="flex text-sm bg-white-800 rounded-full focus:ring-4 focus:ring-gray-300"
@@ -111,6 +113,7 @@ export const CompanyNavigation = () => {
                       />
                     </svg>
                   </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -125,6 +128,7 @@ export const CompanyNavigation = () => {
       >
         <div className="h-full px-3 pb-5 pt-5 overflow-y-auto bg-blue-harits ">
           <ul className="space-y-2 font-medium">
+            <Link href="/company/home">
             <li>
               <a
                 href="#"
@@ -148,6 +152,8 @@ export const CompanyNavigation = () => {
                 <span className="ms-3">Home</span>
               </a>
             </li>
+            </Link>
+            <Link href="/company/explore">
             <li>
               <a
                 href="#"
@@ -172,6 +178,8 @@ export const CompanyNavigation = () => {
                 <span className="inline-flex items-center justify-center px-2 ms-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full"></span>
               </a>
             </li>
+            </Link>
+            <Link href="/company/post">
             <li>
               <a
                 href="#"
@@ -197,6 +205,7 @@ export const CompanyNavigation = () => {
                 </span>
               </a>
             </li>
+            </Link>
           </ul>
         </div>
       </aside>
