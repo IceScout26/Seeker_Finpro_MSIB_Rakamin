@@ -10,7 +10,7 @@ import Image from "next/image";
 import Loader from "../../../../public/assets/loader/Sayap.gif";
 import React, { useState } from "react";
 
-export default function Detail() {
+export default function detailUser() {
   return (
     <div className="container">
       <div className="w-full h-full bg-white">

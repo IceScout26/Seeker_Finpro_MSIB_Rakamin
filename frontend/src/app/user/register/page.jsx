@@ -13,8 +13,12 @@ import { getProvinces } from "../../../lib/city.js";
 import React, { useEffect, useState } from "react";
 
 export default function Register() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [province, setProvince] = useState({});
+  const [isLoading, setIsLoading] = useState(false)
+  const [province, setProvince] = useState({})
+  const [notif, setNotif] = useState({
+    msg: '',
+    type: ''
+  });
   async function inputRegister(event) {
     event.preventDefault();
     setIsLoading(true);
@@ -30,6 +34,23 @@ export default function Register() {
       body: formData,
     });
     const data = await inputData.json();
+    console.log(data)
+
+    // check notif type
+    if (data.message.indexOf('already registered') !== -1) {
+      const notifData = {
+        msg: data.message,
+        type: 'error'
+      }
+      setNotif(notifData);   
+    } else {
+      const notifData = {
+        msg: data.message,
+        type: 'success'
+      }
+      setNotif(notifData)
+      window.location.href = "http://localhost:3000/user/login";
+    }
     setIsLoading(false);
     console.log(data);
   }
@@ -121,17 +142,22 @@ export default function Register() {
               <div className="w-1/2 ml-4 mb-2 text-gray-800">
                 <SelectComp options={province} />
               </div>
-              <div className="ml-4">
-                {isLoading ? (
-                  <Image src={Loader} />
-                ) : (
-                  <button
-                    type="submit"
-                    className="mt-3 mb-2 py-1 bg-blue-600 text-white rounded-2xl px-5"
-                  >
-                    Register
-                  </button>
-                )}
+              {notif.msg.length ? (
+              <div className={`${notif.type === 'error' ? 'bg-yellow-rizky' : 'bg-green-500'} flex justify-center text-white h-10 items-center rounded-lg mt-2`}>
+                <p>
+                  {notif.msg}
+                </p>
+              </div>
+              ) : (
+                <div></div>
+              )}
+              <div className="">
+                {
+                  isLoading ? <Image src={Loader} /> :
+                <button type='submit' className="mt-3 mb-2 py-1 bg-blue-600 text-white rounded-2xl px-5">
+                  Register
+                </button>
+                }
               </div>
             </div>
           </form>

@@ -7,7 +7,7 @@ Renders a navigation component with a sticky header, containing a logo and a lin
 import logo from "../../../../public/assets/logo.webp";
 import Image from "next/image";
 
-export default async function School() {
+export default function Education() {
   return (
     <div className="w-full h-screen bg-white">
       <div className="container w-full h-full bg-white flex justify-center items-center">
