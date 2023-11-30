@@ -7,10 +7,9 @@ const {
   updateCompanyController,
 } = require('../controllers/profileCompanyController');
 
-router.use(verifyToken('company'));
 
 router.get('/companies', getAllCompaniesController);
 router.get('/companies/:companyId', getCompanyByIdController);
-router.put('/companies', updateCompanyController);
+router.put('/companies',verifyToken('company') ,updateCompanyController);
 
 module.exports = router;
