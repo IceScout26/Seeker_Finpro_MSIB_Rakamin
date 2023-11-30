@@ -53,7 +53,7 @@ export const UserNavigation = () => {
                 <div className="pr-7">
                   <button
                     type="button"
-                    className="flex text-sm bg-white-800 rounded-full focus:ring-4 focus:ring-gray-300 "
+                    className="flex text-sm bg-white-800 rounded-full "
                     aria-expanded="false"
                     data-dropdown-toggle="dropdown-user"
                   >
@@ -77,7 +77,7 @@ export const UserNavigation = () => {
                 <div>
                   <button
                     type="button"
-                    className="flex text-sm bg-white-800 rounded-full focus:ring-4 focus:ring-gray-300 "
+                    className="flex text-sm bg-white-800 rounded-full"
                     aria-expanded="false"
                     data-dropdown-toggle="dropdown-user"
                   >
@@ -101,7 +101,7 @@ export const UserNavigation = () => {
                 <div className="pl-2">
                   <button
                     type="button"
-                    className="flex text-sm bg-white-800 rounded-full focus:ring-4 focus:ring-gray-300 "
+                    className="flex text-sm bg-white-800 rounded-full"
                     aria-expanded="false"
                     data-dropdown-toggle="dropdown-user"
                   >
