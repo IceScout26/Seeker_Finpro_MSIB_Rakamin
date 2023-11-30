@@ -13,7 +13,10 @@ import React, { useState } from "react";
 
 export default function Login() {
   const [isLoading, setIsLoading] = useState(false);
-  const [notif, setNotif] = useState("");
+  const [notif, setNotif] = useState({
+    msg: '',
+    type: ''
+  });
   async function sendTokenToLocalstorage(token) {
     console.log(token);
     let today = new Date();
@@ -26,8 +29,8 @@ export default function Login() {
       token: token,
       date: today,
     };
-    localStorage.setItem("token", JSON.stringify(dataToken));
-    console.log(JSON.parse(localStorage.getItem("token")));
+    localStorage.setItem("tokenCompany", JSON.stringify(dataToken));
+    console.log(JSON.parse(localStorage.getItem("tokenCompany")));
   }
   async function inputLogin(event) {
     event.preventDefault();
@@ -42,17 +45,23 @@ export default function Login() {
       body: formData,
     });
     const data = await inputData.json();
-    // localStorage.setItem("token", );
-    setIsLoading(false);
-    // if (data.message === "succes") {
-    //   setNotif("Succesfully Login");
-      
-    // } else {
-    //   setNotif("Login Failed")
-    // }
-    setNotif("Succesfully Login");
-    console.log("test");
+
+    if (data.message.indexOf('failed') !== -1) {
+      const notifData = {
+        msg: data.message,
+        type: 'error'
+      }
+      setNotif(notifData);   
+    } else {
+      const notifData = {
+        msg: data.message,
+        type: 'success'
+      }
+      setNotif(notifData)
+      window.location.href = "http://localhost:3000/company/explore";
+    }
     console.log(data);
+    setIsLoading(false);
     sendTokenToLocalstorage(data.token);
   }
 
@@ -99,9 +108,9 @@ export default function Login() {
                 <div className="border-gray-300 border-b-2"></div>
               </div>
             </div>
-            {notif.length ? (
-              <div className="bg-green-400 flex justify-center text-white h-10 items-center rounded-lg">
-                <p>{notif}</p>
+            {notif.msg.length ? (
+              <div className={`${notif.type === 'error' ? 'bg-red-500' : 'bg-green-500'} flex justify-center text-white h-10 items-center rounded-lg mt-2`}>
+                <p>{notif.msg}</p>
               </div>
             ) : (
               <div></div>

@@ -7,7 +7,7 @@ Renders a navigation component with a sticky header, containing a logo and a lin
 import logo from '../../../../public/assets/logo.webp'
 import Image from 'next/image'
 
-export default async function companyProfile() {
+export default function companyProfile() {
 
     return (
         <div className="container h-full w-full bg-white">

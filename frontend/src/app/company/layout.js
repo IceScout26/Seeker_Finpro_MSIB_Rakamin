@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
         <div className='w-1/6'>
           <CompanyNavigation />
         </div>
-        <div className='w-5/6 lg:w-4/6 md:w-4/6 pt-20'>
+        <div className='w-5/6 pt-20'>
           {children}
         </div>
         </div>
