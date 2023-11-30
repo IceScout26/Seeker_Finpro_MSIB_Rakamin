@@ -7,32 +7,43 @@ Renders a navigation component with a sticky header, containing a logo and a lin
 
 import logo from "../../../../public/assets/logo.webp";
 import Image from "next/image";
-import Foto from "../../../../public/assets/dev/iqbal.jpg"
+import Foto from "../../../../public/assets/dev/iqbal.jpg";
 
 import React, { useState, useEffect } from "react";
 
 export default function companyExplore() {
   const [userData, setUserData] = useState([]);
   function getLocalStorage() {
-    const token = JSON.parse(localStorage.getItem('token'));
-    return token;
+    const token = JSON.parse(localStorage.getItem("tokenCompany"));
+    console.log(token);
+    getUserExplore(token);
   }
-  async function getUserExplore() {
-    const token = getLocalStorage();
-    if (token) {
-      const API = await fetch('http://localhost:5000/profileusers/user', {
-        method: 'GET',
+  async function getUserExplore(token) {
+    let today = new Date();
+    const dd = String(today.getDate()).padStart(2, "0");
+    const mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+    const yyyy = today.getFullYear();
+
+    today = mm + "/" + dd + "/" + yyyy;
+
+    console.log(token.date);
+    if (token.date === today) {
+      const API = await fetch("http://localhost:5000/profileusers/user", {
+        method: "GET",
         headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token.token}`,
         },
       });
-    const data = await API.json();
-    setUserData(data);
+      const data = await API.json();
+      console.log(data);
+      setUserData(data);
+    } else {
+      window.location.href = "http://localhost:3000/company/login";
+    }
   }
   useEffect(() => {
-    getUserExplore();
-    console.log(userData);
+    getLocalStorage();
   }, []);
   return (
     <div className="container h-full w-full bg-white flex items-center flex-col gap-14">
@@ -88,4 +99,4 @@ export default function companyExplore() {
       </div>
     </div>
   );
-}}
+}
