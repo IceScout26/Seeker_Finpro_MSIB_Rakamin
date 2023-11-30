@@ -78,7 +78,7 @@ export const UserNavigation = () => {
                 <div>
                   <button
                     type="button"
-                    className="flex text-sm bg-white-800 rounded-full "
+                    className="flex text-sm bg-white-800 rounded-full"
                     aria-expanded="false"
                     data-dropdown-toggle="dropdown-user"
                   >
