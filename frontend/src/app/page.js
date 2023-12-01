@@ -5,6 +5,7 @@ import companyExplore from './company/explore/page.jsx'
 import Experiences from './user/experience/page.jsx'
 import Education from './user/education/page.jsx'
 import detailUser from './company/detail/page.jsx'
+import detailCompany from './user/detail/page.jsx'
 import Login from './login/page.jsx'
 import UserHome from './user/home/page.jsx'
 import companyHome from './company/home/page.jsx'
@@ -20,6 +21,7 @@ export default function Home() {
       <companyExplore />
       <Experiences />
       <Education />
+      <detailCompany />
       <detailUser />
       <Login />
       <UserHome />
