@@ -91,28 +91,28 @@ export const CompanyNavigation = () => {
                 </div>
                 <div className="pl-2">
                   <Link href="/company/profile">
-                  <button
-                    type="button"
-                    className="flex text-sm bg-white-800 rounded-full focus:ring-4 focus:ring-gray-300"
-                    aria-expanded="false"
-                    data-dropdown-toggle="dropdown-user"
-                  >
-                    <span className="mr-2">Dhimas</span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                      className="w-6 h-6"
+                    <button
+                      type="button"
+                      className="flex text-sm bg-white-800 rounded-full focus:ring-4 focus:ring-gray-300"
+                      aria-expanded="false"
+                      data-dropdown-toggle="dropdown-user"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-                      />
-                    </svg>
-                  </button>
+                      <span className="mr-2">Dhimas</span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="w-6 h-6"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                        />
+                      </svg>
+                    </button>
                   </Link>
                 </div>
               </div>
@@ -128,10 +128,9 @@ export const CompanyNavigation = () => {
       >
         <div className="h-full px-3 pb-5 pt-5 overflow-y-auto bg-blue-harits ">
           <ul className="space-y-2 font-medium">
-            <Link href="/company/home">
             <li>
-              <a
-                href="#"
+              <Link
+                href="/company/home"
                 className="flex items-center p-2 text-white rounded-lg dark:text-white hover:bg-yellow-rizky hover:text-slate-950 focus:bg-yellow-rizky focus:text-slate-950 "
               >
                 <svg
@@ -150,13 +149,11 @@ export const CompanyNavigation = () => {
                 </svg>
 
                 <span className="ms-3">Home</span>
-              </a>
+              </Link>
             </li>
-            </Link>
-            <Link href="/company/explore">
             <li>
-              <a
-                href="#"
+              <Link
+                href="/company/explore"
                 className="flex items-center p-2 text-white rounded-lg dark:text-white hover:bg-yellow-rizky hover:text-slate-950 focus:bg-yellow-rizky focus:text-slate-950"
               >
                 <svg
@@ -176,13 +173,11 @@ export const CompanyNavigation = () => {
 
                 <span className="flex-1 ms-3 whitespace-nowrap">Explore</span>
                 <span className="inline-flex items-center justify-center px-2 ms-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full"></span>
-              </a>
+              </Link>
             </li>
-            </Link>
-            <Link href="/company/post">
             <li>
-              <a
-                href="#"
+              <Link
+                href="/company/post"
                 className="flex items-center p-2 text-white rounded-lg hover:bg-yellow-rizky hover:text-slate-950 focus:bg-yellow-rizky focus:text-slate-950"
               >
                 <svg
@@ -203,9 +198,8 @@ export const CompanyNavigation = () => {
                 <span className="flex-1 ms-3 whitespace-nowrap">
                   Post a Job
                 </span>
-              </a>
+              </Link>
             </li>
-            </Link>
           </ul>
         </div>
       </aside>
