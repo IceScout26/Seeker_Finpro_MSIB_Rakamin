@@ -7,27 +7,44 @@ Renders a navigation component with a sticky header, containing a logo and a lin
 
 import logo from "../../../../public/assets/logo.webp";
 import Image from "next/image";
-import Foto from "../../../../public/assets/dev/iqbal.jpg"
+import Foto from "../../../../public/assets/dev/iqbal.jpg";
 
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 
-export default function Explore() {
+export default function companyExplore() {
   const [userData, setUserData] = useState([]);
-  async function getUserExplore() {
-    const API = await fetch("http://localhost:5000/profileusers/user", {
-      method: "GET",
-      headers: {
-        Type: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50SWQiOjEsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzAxMDE0MDQyLCJleHAiOjE3MDExMDA0NDJ9.A39IKE1KWnjazAOtMUohP6u4X8c1cxHWLFTaGDdtAMA",
-      },
-    });
-    const data = await API.json();
-    setUserData(data);
+  function getLocalStorage() {
+    const token = JSON.parse(localStorage.getItem("tokenCompany"));
+    console.log(token);
+    getUserExplore(token);
+  }
+  async function getUserExplore(token) {
+    let today = new Date();
+    const dd = String(today.getDate()).padStart(2, "0");
+    const mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+    const yyyy = today.getFullYear();
+
+    today = mm + "/" + dd + "/" + yyyy;
+
+    console.log(token.date);
+    if (token.date === today) {
+      const API = await fetch("http://localhost:5000/profileusercompany/user", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token.token}`,
+        },
+      });
+      const data = await API.json();
+      console.log(data);
+      setUserData(data);
+    } else {
+      window.location.href = "http://localhost:3000/company/login";
+    }
   }
   useEffect(() => {
-    getUserExplore();
-    console.log(userData);
+    getLocalStorage();
   }, []);
   return (
     <div className="container h-full w-full bg-white flex items-center flex-col gap-14">
@@ -56,7 +73,7 @@ export default function Explore() {
         <div className="flex justify-center mb-3 flex-col gap-2 items-center">
           {userData.map((user, id) => {
             return (
-              <div
+              <Link href={`/company/explore/${user.id}`}
                 key={id}
                 className="w-5/6 border-b p-4 border-gray-500 bg-white cursor-pointer"
               >
@@ -67,16 +84,15 @@ export default function Explore() {
                   <div className="grid grid-rows-3 flex-1">
                     <div className="font-bold text-xl">{user.name}</div>
                     <div className="bg-blue-harits flex justify-self-start text-white items-center px-1 text-sm rounded-md font-medium">
-                      {/* {user.skill_id} */}
-                      Front End
+                      {user.skill_name}
                     </div>
                     <div className="text-sm pt-2">{user.city}</div>
                   </div>
-                  <div className="border-2 border-black text-center w-14 h-14 ml-64 rounded-lg bg-yellow-rizky text-2xl flex items-center justify-center">
-                    {user.level_id}
+                  <div className="border-2 border-black text-center w-24 h-10 ml-64 rounded-lg bg-yellow-rizky text-sm flex items-center justify-center">
+                    {user.level_name}
                   </div>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>

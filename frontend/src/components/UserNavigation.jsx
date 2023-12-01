@@ -1,5 +1,6 @@
 import Image from "next/image";
 import logoSeeker from "../../public/assets/logoseeker1.png";
+import Link from "next/link";
 
 export const UserNavigation = () => {
   return (
@@ -30,22 +31,22 @@ export const UserNavigation = () => {
                   ></path>
                 </svg>
               </button>
-              <a href="https://www.yominovel.site" className="flex mr-7 items-center">
+              <Link href="/user/home" className="flex mr-7 items-center">
                 <Image src={logoSeeker} alt="" width={50} height={27} />
                 <span className="ml-5 backdrop:self-center text-lg font-semibold hover:text-yellow-rizky ">
                   Seeker
                 </span>
-              </a>
-              <a href="#" className="flex mr-7">
+              </Link>
+              <Link href="/user/home" className="flex mr-7">
                 <span className="self-center text-lg font-semibold hover:text-yellow-rizky ">
                   Home
                 </span>
-              </a>
-              <a href="#" className="flex mr-7">
+              </Link>
+              <Link href="/user/explore" className="flex mr-7">
                 <span className="self-center text-lg font-semibold hover:text-yellow-rizky ">
                   Explore
                 </span>
-              </a>
+              </Link>
             </div>
 
             <div className="flex items-center">
@@ -53,7 +54,7 @@ export const UserNavigation = () => {
                 <div className="pr-7">
                   <button
                     type="button"
-                    className="flex text-sm bg-white-800 rounded-full focus:ring-4 focus:ring-gray-300 "
+                    className="flex text-sm bg-white-800 rounded-full"
                     aria-expanded="false"
                     data-dropdown-toggle="dropdown-user"
                   >
@@ -77,7 +78,7 @@ export const UserNavigation = () => {
                 <div>
                   <button
                     type="button"
-                    className="flex text-sm bg-white-800 rounded-full focus:ring-4 focus:ring-gray-300 "
+                    className="flex text-sm bg-white-800 rounded-full"
                     aria-expanded="false"
                     data-dropdown-toggle="dropdown-user"
                   >
@@ -99,14 +100,15 @@ export const UserNavigation = () => {
                   </button>
                 </div>
                 <div className="pl-2">
+                  <Link href='/user/profile'>
                   <button
                     type="button"
-                    className="flex text-sm bg-white-800 rounded-full focus:ring-4 focus:ring-gray-300 "
+                    className="flex text-sm bg-white-800 rounded-full"
                     aria-expanded="false"
                     data-dropdown-toggle="dropdown-user"
                   >
                     <span className="mr-2">Dhimas</span>
-                    <svg
+                    {/* <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
@@ -119,8 +121,9 @@ export const UserNavigation = () => {
                         strokeLinejoin="round"
                         d="M19.5 8.25l-7.5 7.5-7.5-7.5"
                       />
-                    </svg>
+                    </svg> */}
                   </button>
+                  </Link>
                 </div>
               </div>
             </div>

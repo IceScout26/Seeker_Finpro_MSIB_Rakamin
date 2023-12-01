@@ -7,7 +7,7 @@ Renders a navigation component with a sticky header, containing a logo and a lin
 import logo from '../../../../public/assets/logo.webp'
 import Image from 'next/image'
 
-export default async function Profile() {
+export default function companyProfile() {
 
     return (
         <div className="container h-full w-full bg-white">
@@ -21,7 +21,7 @@ export default async function Profile() {
                         <div className="flex items-center justify-center">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                                 className="h-8 w-8">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
                                     d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
                             </svg>
                         </div>

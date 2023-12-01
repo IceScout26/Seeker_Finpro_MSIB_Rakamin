@@ -4,59 +4,130 @@ Renders a navigation component with a sticky header, containing a logo and a lin
 @returns {JSX.Element} The rendered navigation component.
 */
 
-import logo from '../../../../public/assets/logo.webp'
-import Image from 'next/image'
+import logo from "../../../../public/assets/logo.webp";
+import Image from "next/image";
+import dhimas from "../../../../public/assets/dev/dhimas.jpg"
 
-export default async function Profile() {
-
-    return (
-        <div className="container h-full w-full bg-white">
-            <div className='grid grid-rows-4 place-content-center grid-flow-col gap-4 h-full w-full'>
-                <div className="text-center mt-28">
-                    <h1 className="text-2xl font-semibold text-gray-800">Company Profile</h1>
-                </div>
-                <div className='border-2 border-gray-500 p-20 -mt-28 h-48 max-w-md mx-auto rounded-md'>
-                    <label for="fileInput" className="cursor-pointer">
-                        <input type="file" id="fileInput" className="hidden" />
-                        <div className="flex items-center justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                                className="h-8 w-8">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
-                            </svg>
-                        </div>
-                    </label>
-                </div>
-                <div>
-                    <div className='h-9 -mt-32'>
-                        <label for="name" className="text-1xl font-sans ml-0">Name <span className='pl-10'>:</span></label>
-                        <input className='ml-2 w-5/6 focus:outline-none' type="text" id="name" name="name" />
-                        <div className="border-black opacity-50 border-b-2 ml-0 mr-16 mb-0"></div>
-                    </div>
-                    <div className='h-9'>
-                        <label for="name" className="text-1xl font-sans ml-0">Email <span className='pl-11'>:</span></label>
-                        <input className='ml-2 w-5/6 focus:outline-none' type="text" id="name" name="name" />
-                        <div className="border-black opacity-50 border-b-2 ml-0 mr-16 mb-0"></div>
-                    </div>
-                    <div className='h-9'>
-                        <label for="name" className="text-1xl font-sans ml-0">City <span className='pl-14'>:</span></label>
-                        <input className='ml-2 w-5/6 focus:outline-none' type="text" id="name" name="name" />
-                        <div className="border-black opacity-50 border-b-2 ml-0 mr-16 mb-0"></div>
-                    </div>
-                    <div>
-                        <div>
-                            <label for="name" className="text-1xl font-sans ml-0">Description <span className='pl-1'>:</span></label>
-                        </div>
-                        <div className=' h-24'>
-                            <textarea className='ml-2 w-5/6 focus:outline-none' type="text" id="name" name="name" />
-                        </div>
-                        <div className="border-black opacity-50 border-b-2 ml-0 mr-16 mb-0 mt-5"></div>
-                    </div>
-                    <div className='flex justify-center items-end h-32 px-80'>
-                        <button className=" hover:bg-gray-300 text-black shadow-lg shadow-black border-2 text-lg font-sans py-1 px-7 rounded-full mt-4">Confirm</button>
-                    </div>
-                </div>
-            </div>
+export default function Profile() {
+  return (
+    <div className="container relative w-full h-full bg-white pb-10">
+      <div
+        className="h-72 w-screen bg-cover bg-right contrast-150 border-b-4 border-gray-400 text-blue-harits-dark font-bold text-8xl flex items-center justify-center"
+        style={{ backgroundImage: `url('../../assets/LP/hero-bg.jpg')` }}
+      >
+      </div>
+      <div className="flex justify-center text-center mt-10">
+        <div className="flex flex-col">
+          <div className="absolute text-center top-32 left-1/2 -translate-x-1/2">
+            <Image className="border-2 border-gray-400 h-52 w-52 rounded-full" src={dhimas}/>
+          </div>
+          <div className="mt-4 font-bold">Dhimas Tyas</div>
+          <div className="mt-4 font-semibold">Level 4</div>
+          <div className="mt-4">
+            <button className="border border-gray-300 px-3 rounded-lg">
+              Upload
+            </button>
+          </div>
         </div>
-    );
-};
+      </div>
+      <div className="w-full flex justify-center">
+        <div className="w-3/6 py-10 rounded-lg flex justify-center mt-10 border-4 border-gray-300">
+          <form className="grid grid-rows-7 gap-4 justify-center w-4/5">
+            {/* Firstname - Lastname */}
+            <div className="grid grid-cols-2 gap-6">
+              <div className="grid grid-rows-2">
+                <label htmlFor="">First Name</label>
+                <input
+                  type="text"
+                  className="border-2 border-gray-300 rounded-md"
+                />
+              </div>
+              <div className="grid grid-rows-2">
+                <label htmlFor="">Last Name</label>
+                <input
+                  type="text"
+                  className="border-2 border-gray-300 rounded-md"
+                />
+              </div>
+            </div>
+            {/* Email */}
+            <div className="grid grid-rows-2">
+              <label htmlFor="">Email</label>
+              <input
+                type="email"
+                className="border-2 border-gray-300 rounded-md"
+              />
+            </div>
+            {/* Description */}
+            <div className="flex flex-col">
+              <label htmlFor="">Description</label>
+              <input
+                type="textarea"
+                className="border-2 border-gray-300 h-20 rounded-md"
+              />
+            </div>
+            {/* Birthday - City */}
+            <div className="grid grid-cols-2 gap-6">
+              <div className="grid grid-rows-2">
+                <label htmlFor="">Birthday</label>
+                <input
+                  type="text"
+                  className="border-2 border-gray-300 rounded-md"
+                />
+              </div>
+              <div className="grid grid-rows-2">
+                <label htmlFor="">City</label>
+                <input
+                  type="text"
+                  className="border-2 border-gray-300 rounded-md"
+                />
+              </div>
+            </div>
+            {/* Curriculum Vitae */}
+            <div className=" grid grid-rows-2">
+              <label htmlFor="">Curriculum Vitae</label>
+              <input
+                type="textarea"
+                className="border-2 border-gray-300 rounded-md"
+              />
+            </div>
+            {/* Skills */}
+            <div className=" grid grid-rows-2">
+              <label htmlFor="">Skills</label>
+              <input
+                type="textarea"
+                className="border-2 border-gray-300 rounded-md"
+              />
+            </div>
+            {/* Education - Experience - Button Apply */}
+            <div className="flex justify-between">
+              <div className="grid grid-rows-2">
+                <label htmlFor="">Education</label>
+                <a
+                  href="/user/education"
+                  className="border-2 border-gray-300 text-center rounded-md"
+                >
+                  click
+                </a>
+              </div>
+              <div className="grid grid-rows-2">
+                <label htmlFor="">Experience</label>
+                <a
+                  href="/user/experience"
+                  className="border-2 border-gray-300 text-center rounded-md"
+                >
+                  click
+                </a>
+              </div>
+              <div className="mt-5">
+                <button className="bg-blue-harits text-white border border-black px-6 rounded-xl">
+                  Save
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+}

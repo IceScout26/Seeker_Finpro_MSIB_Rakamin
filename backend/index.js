@@ -4,7 +4,8 @@ const cors = require('cors');
 const authUserRouter = require('./app/routes/authUserRoute');
 const authCompanyRouter = require('./app/routes/authCompanyRoute');
 
-const profileUserRouter = require('./app/routes/profileUserRoute');
+const profileUserUserRouter = require('./app/routes/profileUserUserRoute');
+const profileUserCompanyRouter = require('./app/routes/profileUserCompanyRoute');
 const profileCompanyRouter = require('./app/routes/profileCompanyRoute');
 
 const userPhotoRouter = require('./app/routes/userPhotoRoute');
@@ -34,7 +35,8 @@ app.use(express.urlencoded({extended: true}))
 app.use('/authuser', authUserRouter);
 app.use('/authcompany', authCompanyRouter);
 
-app.use('/profileusers', profileUserRouter);
+app.use('/profileusers', profileUserUserRouter);
+app.use('/profileusercompany', profileUserCompanyRouter);
 app.use('/profilecompany', profileCompanyRouter);
 
 app.use('/userphotos', userPhotoRouter);

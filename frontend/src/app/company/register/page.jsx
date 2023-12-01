@@ -20,7 +20,7 @@ export default function Register() {
     setIsLoading(true)
     console.log(event)
     const formData = new URLSearchParams (new FormData(event.target))
-    const inputData = await fetch('http://localhost:5000/authuser/register', {
+    const inputData = await fetch('http://localhost:5000/authcompany/register', {
       method: "POST",
       headers: {
         Type: "application/json",
@@ -76,7 +76,7 @@ export default function Register() {
                 <input type="email" name='email' className="mt-3 ml-4 mb-2 px-2 py-1 bg-white placeholder-black focus:outline-none focus:border-white focus:ring-white block sm:text-xs focus:ring-1" placeholder="Gmail"/>
                 <div className="border-gray-300 border-b-2 ml-3 mr-7 mb-4"></div>
               </div>
-              <div className='w-1/2 text-gray-800'>
+              <div name='city' className='w-1/2 text-gray-800'>
                 <SelectComp options={province} />
               </div>
               <div className="">
