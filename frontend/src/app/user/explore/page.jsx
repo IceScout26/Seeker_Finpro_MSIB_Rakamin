@@ -7,6 +7,7 @@ Renders a navigation component with a sticky header, containing a logo and a lin
 
 import logo from "../../../../public/assets/logo.webp";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useState, useEffect } from "react";
 
 export default function userExplore() {
@@ -73,9 +74,13 @@ export default function userExplore() {
       </div>
       <div className="w-4/5 flex justify-center">
         <div className="grid grid-cols-3 gap-8 place-items-center">
-          {exploreData.map((explore) => {
+          {exploreData.map((explore, id) => {
             return (
-              <div className="w-96 row p-9 text-brown-gerry rounded-lg shadow-lg border border-gray-200 cursor-pointer mr-4">
+              <Link
+                href={`/user/explore/${explore.id}`}
+                key={id}
+                className="w-96 row p-9 text-brown-gerry rounded-lg shadow-lg border border-gray-200 cursor-pointer mr-4"
+              >
                 <div className="flex justify-between">
                   <h1 className="text-base font-semibold ml-0 mb-4 text-black">
                     {explore.company_name}
@@ -136,7 +141,7 @@ export default function userExplore() {
                       </svg>
                       <div>
                         <h1 className="text-xs font-semibold ml-9 -mt-7 mb-0 text-black">
-                          Bandung, west java
+                          {explore.city}
                         </h1>
                       </div>
                     </div>
@@ -164,7 +169,7 @@ export default function userExplore() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>
