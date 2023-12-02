@@ -5,6 +5,7 @@ Renders a navigation component with a sticky header, containing a logo and a lin
 */
 
 import Image from "next/image";
+import logoSeeker from "../../../../public/assets/logo-ver-akhir.png";
 import logoKM from "../../../../public/assets/LP/logos/km.png";
 import logoRakamin from "../../../../public/assets/LP/logos/rakamin.png";
 import logoGojek from "../../../../public/assets/LP/logos/gojek.png";
@@ -156,11 +157,11 @@ export default async function UserHome() {
           </div>
           <div className="flex justify-between items-center w-3/6 h-32 -translate-y-16 bg-white rounded-md text-center py-4 px-10">
             <div>
-              <span className="font-semibold text-2xl">+320</span> <br /> Companys
+              <span className="font-semibold text-2xl">+320</span> <br />{" "}
+              Companys
             </div>
             <div>
-              <span className="font-semibold text-2xl">+400</span> <br />{" "}
-              Jobs
+              <span className="font-semibold text-2xl">+400</span> <br /> Jobs
             </div>
             <div>
               <span className="font-semibold text-2xl">+500</span> <br /> Users
@@ -189,58 +190,67 @@ export default async function UserHome() {
           })}
         </div>
       </section>
-      <section className="bg-blue-harits bg-opacity-20 w-full flex justify-center items-center py-32">
+      <section className="bg-blue-harits w-full flex justify-center items-center py-32 ">
         <div className="container mx-auto">
-          <div className="h-80 w-full flex justify-between items-center p-10 shadow-md rounded-md bg-white">
+          <div className="h-80 w-full flex justify-between items-center p-10 shadow-md rounded-md text-blue-harits-dark bg-white">
             <div className="w-1/5 flex flex-col gap-2">
-              <h2 className="text-2xl font-semibold">
-                Dukungan & Garansi Purna Jual
-              </h2>
-              <span className="text-sm">
+              <h2 className="text-3xl font-semibold ml-12">Seeker?</h2>
+              {/* <span className="text-sm">
                 Komitmen DomaiNesia mulai dari pertanyaan pra penjualan hingga
                 dukungan purna jual untuk layanan cloud hosting Indonesia.
-              </span>
+              </span> */}
+              <Image
+                src={logoSeeker}
+                alt=""
+                width={200}
+                height={100}
+                className="justify-center"
+              />
             </div>
-            <div className="w-1/4 flex flex-col gap-2 p-4 border-2 border-l-0 border-t-0 border-b-0 border-r-yellow-rizky">
+            <div className="w-1/4 flex flex-col gap-2 p-4 border-2 border-l-0 border-t-0 border-b-0 border-r-white">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth={1}
                 stroke="currentColor"
-                className="w-16 h-16 text-yellow-rizky"
+                className="w-16 h-16 text-blue-harits-dark"
               >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z"
+                  d="M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 21h7.5V10.75M2.25 21h1.5m18 0h-18M2.25 9l4.5-1.636M18.75 3l-1.5.545m0 6.205l3 1m1.5.5l-1.5-.5M6.75 7.364V3h-3v18m3-13.636l10.5-3.819"
                 />
               </svg>
-              <span>Bantuan TimSupport 24/7</span>
+
+              <span>100K Perusahaan Terpercaya</span>
               <span className="text-sm">
-                Anda berhak mendapat pelayanan terbaik dari seluruh tim
-                DomaiNesia, kami selalu siap 24/7 untuk membantu Anda.
+                Kami telah membangun kepercayaan dengan seratus ribu lebih
+                perusahaan ternama yang berkontribusi besar baik secara lokal
+                maupun global
               </span>
             </div>
-            <div className="w-1/4 flex flex-col gap-2 p-4 border-2 border-l-0 border-t-0 border-b-0 border-r-yellow-rizky">
+            <div className="w-1/4 flex flex-col gap-2 p-4 border-2 border-l-0 border-t-0 border-b-0 border-r-white">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth={1}
                 stroke="currentColor"
-                className="w-16 h-16 text-yellow-rizky"
+                className="w-16 h-16 text-blue-harits-dark"
               >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"
+                  d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"
                 />
               </svg>
-              <span>Bantuan TimSupport 24/7</span>
+
+              <span>20 Juta Talenta</span>
               <span className="text-sm">
-                Anda berhak mendapat pelayanan terbaik dari seluruh tim
-                DomaiNesia, kami selalu siap 24/7 untuk membantu Anda.
+                Jutaan talenta terbaik sudah terukir. Bersama Seeker, kami
+                sangat mendukung segala jenjang karir untuk segala lini keahlian
+                yang kompeten
               </span>
             </div>
             <div className="w-1/4 flex flex-col gap-2 p-4">
@@ -250,17 +260,20 @@ export default async function UserHome() {
                 viewBox="0 0 24 24"
                 strokeWidth={1}
                 stroke="currentColor"
-                className="w-16 h-16 text-yellow-rizky"
+                className="w-16 h-16 text-blue-harits-dark"
               >
                 <path
                   strokeLinecap="round"
-                  d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z"
+                  strokeLinejoin="round"
+                  d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5"
                 />
               </svg>
-              <span>Bantuan TimSupport 24/7</span>
+
+              <span>Kualitas Terhadap Kuantitas</span>
               <span className="text-sm">
-                Anda berhak mendapat pelayanan terbaik dari seluruh tim
-                DomaiNesia, kami selalu siap 24/7 untuk membantu Anda.
+                Kami fokus pada kualitas pekerjaan daripada jumlah. Setiap
+                peluang yang dipublikasikan di Seeker telah dipilih dengan ketat
+                untuk keandalan dan relevansinya.
               </span>
             </div>
           </div>
@@ -278,7 +291,14 @@ export default async function UserHome() {
           {programs.map((program, id) => {
             return (
               <div key={id} className="flex gap-4 items-start justify-start">
-                <Image src={program.icons} className="w-20 h-20" />
+                <Image
+                  src={program.icons}
+                  className={`${
+                    program.name === "Mobile Dev"
+                      ? "w-72"
+                      : "w-20"
+                  } h-20`}
+                />
                 <div className="flex flex-col gap-2">
                   <span className="text-lg font-semibold">{program.name}</span>
                   <span>{program.desc}</span>
