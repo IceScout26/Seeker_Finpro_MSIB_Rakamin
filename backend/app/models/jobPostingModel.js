@@ -5,7 +5,7 @@ class JobPostingModel {
   static async getAllJobs() {
     try {
       const result = await pool.query(
-        "SELECT job.*, company.name as company_name, company.city as city FROM job INNER JOIN company ON job.company_id = company.id"
+        "SELECT job.*, company.name as company_name, company.city as city, company.profile_picture as company_picture FROM job INNER JOIN company ON job.company_id = company.id"
       );
       return result.rows;
     } catch (error) {
@@ -16,7 +16,7 @@ class JobPostingModel {
   static async getCompanyJobs(companyId) {
     try {
       const result = await pool.query(
-        'SELECT job.*, company.name as company_name, company.city as city FROM job INNER JOIN company ON job.company_id = company.id WHERE job.company_id = $1',
+        'SELECT job.*, company.name as company_name, company.city as city, company.profile_picture as company_picture FROM job INNER JOIN company ON job.company_id = company.id WHERE job.company_id = $1',
         [companyId]
       );
       return result.rows;
@@ -28,7 +28,7 @@ class JobPostingModel {
   static async getSpecificJob(jobId) {
     try {
       const result = await pool.query(
-        'SELECT job.*, company.name as company_name, company.city as city FROM job INNER JOIN company ON job.company_id = company.id WHERE job.id = $1',
+        'SELECT job.*, company.name as company_name, company.city as city, company.profile_picture as company_picture FROM job INNER JOIN company ON job.company_id = company.id WHERE job.id = $1',
         [jobId]
       );
       return result.rows[0];
@@ -40,7 +40,7 @@ class JobPostingModel {
   static async getJobByName(name) {
     try {
       const result = await pool.query(
-        'SELECT job.*, company.name as company_name, company.city as city FROM "job" INNER JOIN company ON job.company_id = company.id WHERE LOWER(job.title) LIKE $1',
+        'SELECT job.*, company.name as company_name, company.city as city, company.profile_picture as company_picture FROM "job" INNER JOIN company ON job.company_id = company.id WHERE LOWER(job.title) LIKE $1',
         [`%${name.toLowerCase()}%`]
       );
       return result.rows[0];
