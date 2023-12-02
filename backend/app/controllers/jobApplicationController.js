@@ -34,12 +34,15 @@ const getApplicationsByJobController = async (req, res) => {
   try {
     const job = await JobPostingModel.getSpecificJob(jobId);
 
-    if (!job || job.company_id !== companyId) {
-      return res
-      .status(403)
-      .json({ 
-        message: 
-        'Forbidden: You do not have permission to access applications for this job.' 
+    if (!job) {
+      return res.status(404).json({
+        message: "Not Found: Job not found for the provided application.",
+      });
+    }
+
+    if (job.company_id !== companyId) {
+      return res.status(403).json({
+        message: "Forbidden: You do not have permission to access applications for this job.",
       });
     }
 
@@ -142,13 +145,17 @@ const companyDeleteApplicationController = async (req, res) => {
 
     const job = await JobPostingModel.getSpecificJob(application.job_id);
 
-    if (!job || job.company_id !== companyId) {
-      return res
-        .status(403)
-        .json({
-          message:
-            "Forbidden: You do not have permission to delete this application.",
-        });
+
+    if (!job) {
+      return res.status(404).json({
+        message: "Not Found: Job not found for the provided application.",
+      });
+    }
+    
+    if (job.company_id !== companyId) {
+      return res.status(403).json({
+        message: "Forbidden: You do not have permission to update the status of this application.",
+      });
     }
 
     const deletedApplication = await ApplicationModel.deleteApplication(
