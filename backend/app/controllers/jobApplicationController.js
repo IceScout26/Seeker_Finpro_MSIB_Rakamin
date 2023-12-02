@@ -55,6 +55,19 @@ const getApplicationsByJobController = async (req, res) => {
   }
 };
 
+const getApplicationsByCompanyController = async (req, res) => {
+  const companyId = req.accountId;
+
+  try {
+    const applications = await ApplicationModel.getApplicationsByCompany(companyId);
+    
+    res.status(200).json(applications);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
+};
+
 const updateApplicationStatusController = async (req, res) => {
   const applicationId = req.params.applicationId;
   const newStatus = req.body.status;
@@ -170,6 +183,7 @@ module.exports = {
   applyForJobController,
   getApplicationsByUserController,
   getApplicationsByJobController,
+  getApplicationsByCompanyController,
   updateApplicationStatusController,
   userDeleteApplicationController,
   companyDeleteApplicationController,
