@@ -29,7 +29,7 @@ export default function companyExplore() {
 
     console.log(token.date);
     if (token.date === today) {
-      const API = await fetch("http://localhost:5000/profileusercompany/user", {
+      const API = await fetch("https://backend.seekerjob.site/profileusercompany/user", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
