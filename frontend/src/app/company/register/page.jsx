@@ -15,23 +15,41 @@ import React, { useEffect, useState } from 'react'
 export default function Register() {
   const [isLoading, setIsLoading] = useState(false)
   const [province, setProvince] = useState({})
+  const [notif, setNotif] = useState({
+    msg: '',
+    type: ''
+  });
   async function inputRegister(event) {
     event.preventDefault();
     setIsLoading(true)
     console.log(event)
     const formData = new URLSearchParams (new FormData(event.target))
-    const inputData = await fetch('http://localhost:5000/authcompany/register', {
+    const inputData = await fetch('https://backend.seekerjob.site/authcompany/register', {
       method: "POST",
       headers: {
         Type: "application/json",
-        Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50SWQiOjEsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzAwODIwMjY1LCJleHAiOjE3MDA5MDY2NjV9.bZ0Yz7pSxjkD2B3hqo5Er_jMFk-eP4esrN0E3ZemRS0",
       },
         body: formData,
     });
     const data = await inputData.json();
-    setIsLoading(false);
     console.log(data)
+
+    if (data.message.indexOf('already registered') !== -1) {
+      const notifData = {
+        msg: data.message,
+        type: 'error'
+      }
+      setNotif(notifData);   
+    } else {
+      const notifData = {
+        msg: data.message,
+        type: 'success'
+      }
+      setNotif(notifData)
+      window.location.href = "http://localhost:3000/company/login";
+    }
+    setIsLoading(false);
+    console.log(data);
   }
   useEffect(() => {
     const renderList = async () => {
@@ -79,6 +97,15 @@ export default function Register() {
               <div name='city' className='w-1/2 text-gray-800'>
                 <SelectComp options={province} />
               </div>
+              {notif.msg.length ? (
+              <div className={`${notif.type === 'error' ? 'bg-yellow-rizky' : 'bg-green-500'} flex justify-center text-white h-10 items-center rounded-lg mt-2`}>
+                <p>
+                  {notif.msg}
+                </p>
+              </div>
+              ) : (
+                <div></div>
+              )}
               <div className="">
                 {
                   isLoading ? <Image src={Loader} /> :

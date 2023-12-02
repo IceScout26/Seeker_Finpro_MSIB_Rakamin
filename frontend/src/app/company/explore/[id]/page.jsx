@@ -28,7 +28,7 @@ export default function detailUser({ params }) {
 
     if (token.date === today) {
         const API = await fetch(
-          `http://localhost:5000/profileusercompany/user/${params.id}`,
+          `https://backend.seekerjob.site/profileusercompany/user/${params.id}`,
           {
             method: "GET",
             headers: {
