@@ -39,7 +39,7 @@ class ApplicationModel {
   static async getApplicationsByUser(userId) {
     try {
       const result = await pool.query(
-        'SELECT job.title as job_title, "user".name as user_name, application.status FROM "application" INNER JOIN "job" ON application.job_id = job.id INNER JOIN "user" ON application.user_id = "user".id WHERE application.user_id = $1',
+        'SELECT application.*, job.title as job_title, "user".name as user_name FROM "application" INNER JOIN "job" ON application.job_id = job.id INNER JOIN "user" ON application.user_id = "user".id WHERE application.user_id = $1',
         [userId]
       );
       return result.rows;
@@ -51,8 +51,20 @@ class ApplicationModel {
   static async getApplicationsByJob(jobId) {
     try {
       const result = await pool.query(
-        'SELECT job.title as job_title, "user".name as user_name, application.status FROM "application" INNER JOIN "job" ON application.job_id = job.id INNER JOIN "user" ON application.user_id = "user".id WHERE application.job_id = $1',
+        'SELECT application.*, job.title as job_title, "user".name as user_name FROM "application" INNER JOIN "job" ON application.job_id = job.id INNER JOIN "user" ON application.user_id = "user".id WHERE application.job_id = $1',
         [jobId]
+      );
+      return result.rows;
+    } catch (error) {
+      throw error;
+    }
+  }
+  
+  static async getApplicationsByCompany(companyId) {
+    try {
+      const result = await pool.query(
+        'SELECT application.*, job.title as job_title, "user".name as user_name FROM "application" INNER JOIN "job" ON application.job_id = job.id INNER JOIN "user" ON application.user_id = "user".id WHERE job.company_id = $1',
+        [companyId]
       );
       return result.rows;
     } catch (error) {

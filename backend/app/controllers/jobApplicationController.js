@@ -34,17 +34,33 @@ const getApplicationsByJobController = async (req, res) => {
   try {
     const job = await JobPostingModel.getSpecificJob(jobId);
 
-    if (!job || job.company_id !== companyId) {
-      return res
-      .status(403)
-      .json({ 
-        message: 
-        'Forbidden: You do not have permission to access applications for this job.' 
+    if (!job) {
+      return res.status(404).json({
+        message: "Not Found: Job not found for the provided application.",
+      });
+    }
+
+    if (job.company_id !== companyId) {
+      return res.status(403).json({
+        message: "Forbidden: You do not have permission to access applications for this job.",
       });
     }
 
     const applications = await ApplicationModel.getApplicationsByJob(jobId);
 
+    res.status(200).json(applications);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
+};
+
+const getApplicationsByCompanyController = async (req, res) => {
+  const companyId = req.accountId;
+
+  try {
+    const applications = await ApplicationModel.getApplicationsByCompany(companyId);
+    
     res.status(200).json(applications);
   } catch (error) {
     console.error(error);
@@ -141,14 +157,11 @@ const companyDeleteApplicationController = async (req, res) => {
     }
 
     const job = await JobPostingModel.getSpecificJob(application.job_id);
-
-    if (!job || job.company_id !== companyId) {
-      return res
-        .status(403)
-        .json({
-          message:
-            "Forbidden: You do not have permission to delete this application.",
-        });
+    
+    if (job.company_id !== companyId) {
+      return res.status(403).json({
+        message: "Forbidden: You do not have permission to update the status of this application.",
+      });
     }
 
     const deletedApplication = await ApplicationModel.deleteApplication(
@@ -170,6 +183,7 @@ module.exports = {
   applyForJobController,
   getApplicationsByUserController,
   getApplicationsByJobController,
+  getApplicationsByCompanyController,
   updateApplicationStatusController,
   userDeleteApplicationController,
   companyDeleteApplicationController,
