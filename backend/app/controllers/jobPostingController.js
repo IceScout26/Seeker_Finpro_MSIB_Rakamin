@@ -46,7 +46,10 @@ const companyPostJobController = async (req, res) => {
 
   try {
     const newJob = await JobPostingModel.postJob(companyId, jobData);
-    res.status(201).json(newJob);
+    res.status(201).json({
+      message: 'Job successfully posted',
+      job: newJob
+    });
   } catch (error) {
     console.error(error);
     res.status(500).send("Internal Server Error");
