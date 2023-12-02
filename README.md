@@ -29,7 +29,11 @@ Wire Frame - https://www.figma.com/file/oAaKXKXsTHO7Hrc6leqXoq/Untitled?type=des
 
 ### Diagram
 
+![Picture1](https://github.com/IceScout26/Seeker_Finpro_MSIB_Rakamin/assets/55837575/c569a722-25f7-450f-bf34-151f493cd53b)
+
 ### Postman
+
+https://documenter.getpostman.com/view/30058657/2s9YeK4Vfr
 
 ### Laporan Akhir
 https://docs.google.com/presentation/d/1P9M3w02wxUmZzurOR0XX4DOU-a-OzlEk/edit?usp=sharing&ouid=112867760876783228315&rtpof=true&sd=true
