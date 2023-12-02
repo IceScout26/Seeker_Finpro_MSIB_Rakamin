@@ -37,7 +37,7 @@ export default function Login() {
     setIsLoading(true);
     console.log(event);
     const formData = new URLSearchParams(new FormData(event.target));
-    const inputData = await fetch("http://localhost:5000/authcompany/login", {
+    const inputData = await fetch("https://backend.seekerjob.site/authcompany/login", {
       method: "POST",
       headers: {
         Type: "application/json",
