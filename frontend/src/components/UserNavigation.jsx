@@ -1,12 +1,12 @@
 import Image from "next/image";
-import logoSeeker from "../../public/assets/logoseeker1.png";
+import logoSeeker from "../../public/assets/logo-ver-akhir.png";
 import Link from "next/link";
 
 export const UserNavigation = () => {
   return (
     <div className="container h-full w-screen">
-      <nav className="fixed top-0 z-50 w-full bg-blue-harits border-b border-gray-200 text-white">
-        <div className="px-3 py-6 lg:px-6 lg:pl-3">
+      <nav className="fixed top-0 z-50 w-full bg-blue-harits border-b border-gray-200 text-white tracking-wider">
+        <div className="px-3 py-5 lg:px-6 lg:pl-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center justify-start">
               <button
@@ -32,18 +32,18 @@ export const UserNavigation = () => {
                 </svg>
               </button>
               <Link href="/user/home" className="flex mr-7 items-center">
-                <Image src={logoSeeker} alt="" width={50} height={27} />
-                <span className="ml-5 backdrop:self-center text-lg font-semibold hover:text-yellow-rizky ">
+                <Image src={logoSeeker} alt="" width={70} height={27} />
+                <span className="ml-5 backdrop:self-center text-2xl hover:text-yellow-rizky ">
                   Seeker
                 </span>
               </Link>
               <Link href="/user/home" className="flex mr-7">
-                <span className="self-center text-lg font-semibold hover:text-yellow-rizky ">
+                <span className="self-center text-2xl hover:text-yellow-rizky ">
                   Home
                 </span>
               </Link>
               <Link href="/user/explore" className="flex mr-7">
-                <span className="self-center text-lg font-semibold hover:text-yellow-rizky ">
+                <span className="self-center text-2xl hover:text-yellow-rizky ">
                   Explore
                 </span>
               </Link>
@@ -100,15 +100,15 @@ export const UserNavigation = () => {
                   </button>
                 </div>
                 <div className="pl-2">
-                  <Link href='/user/profile'>
-                  <button
-                    type="button"
-                    className="flex text-sm bg-white-800 rounded-full"
-                    aria-expanded="false"
-                    data-dropdown-toggle="dropdown-user"
-                  >
-                    <span className="mr-2">Dhimas</span>
-                    {/* <svg
+                  <Link href="/user/profile">
+                    <button
+                      type="button"
+                      className="flex text-sm bg-white-800 rounded-full"
+                      aria-expanded="false"
+                      data-dropdown-toggle="dropdown-user"
+                    >
+                      <span className="mr-2">Dhimas</span>
+                      {/* <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
@@ -122,7 +122,7 @@ export const UserNavigation = () => {
                         d="M19.5 8.25l-7.5 7.5-7.5-7.5"
                       />
                     </svg> */}
-                  </button>
+                    </button>
                   </Link>
                 </div>
               </div>
