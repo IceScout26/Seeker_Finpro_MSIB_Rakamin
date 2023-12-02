@@ -1,12 +1,12 @@
 import Image from "next/image";
-import logoSeeker from "../../public/assets/logoseeker1.png";
+import logoSeeker from "../../public/assets/logo-ver-akhir.png";
 import Link from "next/link";
 
 export const CompanyNavigation = () => {
   return (
     <div className="container h-screen w-screen">
-      <nav className="fixed top-0 z-50 w-full bg-white border-b border-gray-200">
-        <div className="px-3 py-6 lg:px-6 lg:pl-3">
+      <nav className="fixed top-0 z-50 w-full bg-white border-b border-gray-200 tracking-wide">
+        <div className="px-3 py-5 lg:px-6 lg:pl-3">
           <div className="flex items-center w-full justify-between">
             <div className="flex items-center justify- w-64">
               <button
@@ -31,9 +31,9 @@ export const CompanyNavigation = () => {
                   ></path>
                 </svg>
               </button>
-              <a href="https://www.yominovel.site" className="flex mr-7">
-                <Image src={logoSeeker} alt="" width={50} height={27} />
-                <span className="ml-5 backdrop:self-center text-xl font-semibold sm:text-2xl whitespace-nowrap hover:text-yellow-rizky">
+              <a href="#" className="flex mr-7">
+                <Image src={logoSeeker} alt="" width={70} height={27} />
+                <span className="ml-5 pt-2 backdrop:self-center text-xl font-semibold sm:text-2xl whitespace-nowrap hover:text-yellow-rizky">
                   Seeker
                 </span>
               </a>
@@ -44,7 +44,7 @@ export const CompanyNavigation = () => {
                 <div className="pr-7">
                   <button
                     type="button"
-                    className="flex text-sm bg-white-800 rounded-full focus:ring-4 focus:ring-gray-300 "
+                    className="flex text-sm bg-white-800 rounded-full"
                     aria-expanded="false"
                     data-dropdown-toggle="dropdown-user"
                   >
@@ -68,7 +68,7 @@ export const CompanyNavigation = () => {
                 <div>
                   <button
                     type="button"
-                    className="flex text-sm bg-white-800 rounded-full focus:ring-4 focus:ring-gray-300"
+                    className="flex text-sm bg-white-800 rounded-full"
                     aria-expanded="false"
                     data-dropdown-toggle="dropdown-user"
                   >
@@ -93,7 +93,7 @@ export const CompanyNavigation = () => {
                   <Link href="/company/profile">
                     <button
                       type="button"
-                      className="flex text-sm bg-white-800 rounded-full focus:ring-4 focus:ring-gray-300"
+                      className="flex text-sm bg-white-800 rounded-full"
                       aria-expanded="false"
                       data-dropdown-toggle="dropdown-user"
                     >
@@ -126,8 +126,8 @@ export const CompanyNavigation = () => {
         className="fixed top-0 left-0 z-100 w-64 h-screen pt-20 transition-transform -translate-x-full bg-blue-harits bg-opacity-50 border-r border-blue-harits sm:translate-x-0"
         aria-label="Sidebar"
       >
-        <div className="h-full px-3 pb-5 pt-5 overflow-y-auto bg-blue-harits ">
-          <ul className="space-y-2 font-medium">
+        <div className="h-full px-3 pb-5 pt-5 overflow-y-auto bg-blue-harits tracking-wider">
+          <ul className="space-y-2">
             <li>
               <Link
                 href="/company/home"
@@ -148,7 +148,7 @@ export const CompanyNavigation = () => {
                   />
                 </svg>
 
-                <span className="ms-3">Home</span>
+                <span className="ms-3 ">Home</span>
               </Link>
             </li>
             <li>
