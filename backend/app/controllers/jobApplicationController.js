@@ -144,13 +144,6 @@ const companyDeleteApplicationController = async (req, res) => {
     }
 
     const job = await JobPostingModel.getSpecificJob(application.job_id);
-
-
-    if (!job) {
-      return res.status(404).json({
-        message: "Not Found: Job not found for the provided application.",
-      });
-    }
     
     if (job.company_id !== companyId) {
       return res.status(403).json({
