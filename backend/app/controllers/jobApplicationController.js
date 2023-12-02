@@ -67,12 +67,17 @@ const updateApplicationStatusController = async (req, res) => {
     // Check if the job's company is the same as the company that logged in
     const job = await JobPostingModel.getSpecificJob(application.job_id);
 
-    if (!job || job.company_id !== companyId) {
+    if (!job) {
+      return res.status(404).json({
+        message: "Not Found: Job not found for the provided application.",
+      });
+    }
+    
+    if (job.company_id !== companyId) {
       return res.status(403).json({
         message: "Forbidden: You do not have permission to update the status of this application.",
       });
     }
-
     const updatedApplication = await ApplicationModel.updateApplicationStatus(
       applicationId,
       newStatus

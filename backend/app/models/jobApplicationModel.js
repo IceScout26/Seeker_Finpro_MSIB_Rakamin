@@ -5,7 +5,7 @@ class ApplicationModel {
   static async getApplicationDetails(applicationId) {
     try {
       const result = await pool.query(
-        'SELECT job.title as job_title, "user".name as user_name, application.status FROM "application" INNER JOIN "job" ON application.job_id = job.id INNER JOIN "user" ON application.user_id = "user".id WHERE application.id = $1',
+        'SELECT application.*, job.title as job_title, "user".name as user_name FROM "application" INNER JOIN "job" ON application.job_id = job.id INNER JOIN "user" ON application.user_id = "user".id WHERE application.id = $1',
         [applicationId]
       );
 
