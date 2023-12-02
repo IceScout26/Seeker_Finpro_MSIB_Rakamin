@@ -28,8 +28,6 @@ export default function Register() {
       method: "POST",
       headers: {
         Type: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50SWQiOjEsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzAwODIwMjY1LCJleHAiOjE3MDA5MDY2NjV9.bZ0Yz7pSxjkD2B3hqo5Er_jMFk-eP4esrN0E3ZemRS0",
       },
       body: formData,
     });
