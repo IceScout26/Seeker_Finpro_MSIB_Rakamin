@@ -5,7 +5,7 @@ import Link from "next/link";
 export const UserNavigation = () => {
   return (
     <div className="container h-full w-screen">
-      <nav className="fixed top-0 z-50 w-full bg-blue-harits border-b border-gray-200 text-white tracking-wider">
+      <nav className="fixed top-0 z-50 w-full bg-blue-harits border-b border-gray-200 text-white tracking-wider shadow-2xl">
         <div className="px-3 py-5 lg:px-6 lg:pl-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center justify-start">
