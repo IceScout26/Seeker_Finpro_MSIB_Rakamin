@@ -58,7 +58,7 @@ export default function Login() {
         type: 'success'
       }
       setNotif(notifData)
-      window.location.href = "http://localhost:3000/company/explore";
+      window.location.href = "http://localhost:3000/company/home";
     }
     console.log(data);
     setIsLoading(false);
