@@ -7,6 +7,7 @@ Renders a navigation component with a sticky header, containing a logo and a lin
 
 import React, { useEffect, useState } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
+import Image from "next/image";
 
 export default function detailJob({ params }) {
   const [detailJob, setDetailJob] = useState({});
@@ -31,7 +32,7 @@ export default function detailJob({ params }) {
     return formattedDate;
   }
   async function getJobById() {
-    const API = await fetch(`http://localhost:5000/job/${params.id}`, {
+    const API = await fetch(`https://backend.seekerjob.site/job/${params.id}`, {
       method: "GET",
       headers: {
         Type: "application/json",
@@ -51,7 +52,7 @@ export default function detailJob({ params }) {
           <div className="items-center px-5 pt-5 grid grid-rows-6">
             <div className="grid grid-cols-2 w-40">
               <div className="border-2 border-black h-20 w-20 flex items-center justify-center bg-gray-400">
-                {/* <h1 className="">{id}</h1> */}
+              <Image src={detailJob.company_picture} width='200' height='200' />
               </div>
               <div className="grid grid-rows-2 pl-4 w-40">
                 <div className="grid items-end border-b border-black w-28">
@@ -99,7 +100,7 @@ export default function detailJob({ params }) {
                 <h2 className="font-semibold">Due Date</h2>
               </div>
               <div className="">
-                {/* <p>{detailJob.due_date.split(" ")[0]}</p> */}
+                <p>{detailJob.due_date === undefined ? '' : formatDate(detailJob.due_date.split("T")[0])}</p>
               </div>
             </div>
             <div className="flex justify-center">
