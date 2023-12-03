@@ -38,16 +38,16 @@ export default function CompanyJob() {
       });
       const data = await inputPost.json();
       console.log(data);
-      if (data.status === "Open") {
+      if (data.message.indexOf('succesfully') === -1) {
         const notifPost = {
-          msg: "Successfully Post a Job",
+          msg: data.message,
           type: 'success'
         }
         setNotif(notifPost);
-        window.location.href = "https://localhost:3000/company/home";
+        window.location.href = "http://localhost:3000/company/home";
       } else {
         const notifPost = {
-          msg: "Failed Post a Job",
+          msg: data.message,
           type: 'error'
         }
         setNotif(notifPost)
