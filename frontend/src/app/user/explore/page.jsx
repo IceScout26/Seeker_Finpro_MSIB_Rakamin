@@ -106,7 +106,6 @@ export default function userExplore() {
           className="h-11 w-1/4 mt-10 rounded-3xl placeholder:italic placeholder:text-slate-400 block bg-white border-black border-2 py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
           placeholder="Search by Title..."
         />
-        {searchTitle}
       </div>
       <div className="w-4/5 flex justify-center">
         <div className="grid grid-cols-3 gap-8 place-items-center">
