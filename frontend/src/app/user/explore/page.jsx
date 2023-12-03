@@ -12,6 +12,8 @@ import React, { useState, useEffect } from "react";
 
 export default function userExplore() {
   const [exploreData, setExploreData] = useState([]);
+  const [searchTitle, setSearchTitle] = useState('');
+  const [token, settoken] = useState({});
   function formatDate(date) {
     const [year, month, day] = date.split("-");
     const months = [
@@ -34,8 +36,40 @@ export default function userExplore() {
   }
   function getLocalStorage() {
     const pass = JSON.parse(localStorage.getItem("token"));
+    settoken(pass)
     getUserExplore(pass);
     return pass;
+  }
+  async function getUserByTitle(event) {
+    setSearchTitle(event.target.value)
+    let today = new Date();
+    const dd = String(today.getDate()).padStart(2, "0");
+    const mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+    const yyyy = today.getFullYear();
+
+    today = mm + "/" + dd + "/" + yyyy;
+
+    console.log(token.date);
+    if (token.date === today) {
+      setTimeout( async () => {
+        
+        const API = await fetch(
+          `https://backend.seekerjob.site/jobuser/user/search/${searchTitle}`,
+          {
+            method: "GET",
+            headers: {
+              Type: "application/json",
+              Authorization: `Bearer ${token.token}`
+            },
+          }
+        );
+        const data = await API.json();
+        setExploreData(data);
+        console.log(data);
+      }, 2000);
+    } else {
+      window.location.href = "http://localhost:3000/user/login";
+    }
   }
   async function getUserExplore(token) {
     let today = new Date();
@@ -47,7 +81,7 @@ export default function userExplore() {
 
     console.log(token.date);
     if (token.date === today) {
-      const API = await fetch("http://localhost:5000/job", {
+      const API = await fetch("https://backend.seekerjob.site/job", {
         method: "GET",
         headers: {
           Type: "application/json",
@@ -65,12 +99,14 @@ export default function userExplore() {
   }, []);
   return (
     <div className="container h-full w-screen bg-white pb-16 grid place-items-center">
-      <div className="pb-16">
+      <div className="pb-16 w-full flex justify-center">
         <input
           type="text"
-          className="h-11 w-full mt-10 rounded-3xl placeholder:italic placeholder:text-slate-400 block bg-white border-black border-2 py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
-          placeholder="Search for anything..."
+          onChange={(e) => getUserByTitle(e)} value={searchTitle}
+          className="h-11 w-1/4 mt-10 rounded-3xl placeholder:italic placeholder:text-slate-400 block bg-white border-black border-2 py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+          placeholder="Search by Title..."
         />
+        {searchTitle}
       </div>
       <div className="w-4/5 flex justify-center">
         <div className="grid grid-cols-3 gap-8 place-items-center">
@@ -79,22 +115,26 @@ export default function userExplore() {
               <Link
                 href={`/user/explore/${explore.id}`}
                 key={id}
-                className="w-96 row p-9 text-brown-gerry rounded-lg shadow-lg border border-gray-200 cursor-pointer mr-4"
+                className="w-96 row p-9 text-brown-gerry rounded-lg border border-black border-opacity-25 cursor-pointer mr-4"
               >
-                <div className="flex justify-between">
-                  <h1 className="text-base font-semibold ml-0 mb-4 text-black">
+                <div className="flex justify-between mb-2">
+                  <h1 className="text-base font-semibold ml-1 text-blue-harits-dark">
                     {explore.company_name}
                   </h1>
-                  <h2 className="text-base ml-0 mb-4 text-black">
+                  <h2 className="text-xs ml-0 mt-2 text-blue-harits-dark">
                     Rp.{explore.salary}
                   </h2>
                 </div>
                 <div className="flex">
-                  <div className="h-20 w-20 border-2 mt-0  bg-slate-200 text-center">
-                    FOTO
+                  <div className="h-24 w-24 rounded-lg border-2 bg-gray-400 items-center flex justify-center">
+                    <Image
+                      src={explore.company_picture}
+                      width="200"
+                      height="200"
+                    />
                   </div>
                   <div className="flex flex-col gap-2">
-                    <div>
+                    <div className=" ">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="50"
@@ -111,7 +151,7 @@ export default function userExplore() {
                         />
                       </svg>
                       <div>
-                        <h1 className="text-xs font-semibold ml-9 -mt-7 mb-0 text-black">
+                        <h1 className="text-sm font-semibold ml-9 -mt-7 mb-0 text-blue-harits-dark">
                           {explore.title}
                         </h1>
                       </div>
@@ -140,7 +180,7 @@ export default function userExplore() {
                         />
                       </svg>
                       <div>
-                        <h1 className="text-xs font-semibold ml-9 -mt-7 mb-0 text-black">
+                        <h1 className="text-sm font-semibold ml-9 -mt-7 mb-0 text-blue-harits-dark">
                           {explore.city}
                         </h1>
                       </div>
@@ -162,7 +202,7 @@ export default function userExplore() {
                         />
                       </svg>
                       <div>
-                        <h1 className="text-xs font-semibold ml-9 -mt-7 mb-0 text-black">
+                        <h1 className="text-xs font-semibold ml-9 -mt-7 mb-0 text-blue-harits-dark opacity-60">
                           {formatDate(explore.due_date.split("T")[0])}
                         </h1>
                       </div>
