@@ -31,7 +31,7 @@ export default function Profile() {
         </div>
       </div>
       <div className="w-full flex justify-center">
-        <div className="w-3/6 py-10 rounded-lg flex justify-center mt-10 border-4 border-gray-300">
+        <div className="w-3/6 py-10 rounded-lg flex justify-center mt-10 border border-black border-opacity-25">
           <form className="grid grid-rows-7 gap-4 justify-center w-4/5">
             {/* Firstname - Lastname */}
             <div className="grid grid-cols-2 gap-6">

@@ -123,10 +123,10 @@ export const CompanyNavigation = () => {
 
       <aside
         id="logo-sidebar"
-        className="fixed top-0 left-0 z-100 w-64 h-screen pt-20 transition-transform -translate-x-full bg-blue-harits bg-opacity-50 border-r border-blue-harits sm:translate-x-0"
+        className="fixed top-0 left-0 z-100 w-64 h-screen pt-20 transition-transform -translate-x-full bg-gray-300 bg-opacity-50 border-r border-blue-harits sm:translate-x-0 shadow-2xl"
         aria-label="Sidebar"
       >
-        <div className="h-full px-3 pb-5 pt-5 overflow-y-auto bg-blue-harits tracking-wider">
+        <div className="h-full px-3 pb-5 pt-5 overflow-y-auto shadow-2xl bg-blue-harits tracking-wider">
           <ul className="space-y-2">
             <li>
               <Link
