@@ -43,7 +43,7 @@ class JobPostingModel {
         'SELECT job.*, company.name as company_name, company.city as city FROM "job" INNER JOIN company ON job.company_id = company.id WHERE LOWER(job.title) LIKE $1',
         [`%${name.toLowerCase()}%`]
       );
-      return result.rows[0];
+      return result.rows;
     } catch (error) {
       throw error;
     }
