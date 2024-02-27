@@ -1,0 +1,6 @@
+PG_USER=nomadean
+PG_HOST=localhost
+PG_DATABASE=nomadean_job_seeker
+PG_PASSWORD=aselole123jos
+PG_PORT=5432
+JWT_SECRET=secret
